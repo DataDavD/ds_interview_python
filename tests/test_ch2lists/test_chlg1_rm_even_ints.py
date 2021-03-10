@@ -17,5 +17,5 @@ def test_result_list() -> List[int]:
 def test_remove_even_first(test_list: List[int], test_result_list: List[int]) -> None:
     assert remove_even_first(test_list) == test_result_list
 
-# def test_remove_even_second(test_list: List[int], test_result_list: List[int]) -> None:
+def test_remove_even_second(test_list: List[int], test_result_list: List[int]) -> None:
     assert remove_even_pythonic(test_list) == test_result_list
