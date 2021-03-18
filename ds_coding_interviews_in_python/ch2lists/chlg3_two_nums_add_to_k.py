@@ -2,7 +2,7 @@ from typing import List, Optional
 
 # 1st try brute force: O(n^2)
 def find_sum(lst: List[int], k: int) -> Optional[List[int]]:
-    result = list()
+    result: List[int] = list()
     ix = 0
     ix2 = 1
     while ix < len(lst):
@@ -14,6 +14,7 @@ def find_sum(lst: List[int], k: int) -> Optional[List[int]]:
                 ix2 += 1
         ix += 1
         ix2 = ix + 1
+    return None
 
 
 # solution brute force: O(n^2)
@@ -27,6 +28,7 @@ def find_sum_2(lst: List[int], k: int) -> Optional[List[int]]:
             # then we have our answer
             if lst[i] + lst[j] is k and i is not j:
                 return [lst[i], lst[j]]
+    return None
 
 
 def binary_search(a: List[int], item: int) -> int:
@@ -60,6 +62,8 @@ def find_sum_binary(lst: List[int], k: int) -> Optional[List[int]]:
         index = binary_search(lst, k - lst[j])
         if index is not -1 and index is not j:
             return [lst[j], k - lst[j]]
+
+    return None
 
 
 # scan takes O(n) (at worst; i.e. if we go through the whole list

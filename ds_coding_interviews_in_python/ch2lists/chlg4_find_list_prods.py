@@ -3,7 +3,7 @@ from typing import List
 
 # brute force driving through the list fully once and list n-1
 # so O(n^2) time complexity
-def find_product(lst: List[int]) -> [List]:
+def find_product(lst: List[int]) -> List[int]:
     result = list()
     for x in range(len(lst)):
         product = 1
@@ -15,7 +15,7 @@ def find_product(lst: List[int]) -> [List]:
 
 
 # O(n^2) because list iterated over n(n-1)/2
-def find_product_sol1(lst):
+def find_product_sol1(lst: List[int]) -> List[int]:
     result = []
     left = 1  # To store product of all previous values from currentIndex
     for i in range(len(lst)):
@@ -32,7 +32,7 @@ def find_product_sol1(lst):
 
 
 # O(n) since only traverse the list twice
-def find_product_sol2(lst):
+def find_product_sol2(lst: List[int]) -> List[int]:
     # get product start from left
     left = 1
     product = []
