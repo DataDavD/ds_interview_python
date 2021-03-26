@@ -60,7 +60,7 @@ def find_sum_binary(lst: List[int], k: int) -> Optional[List[int]]:
         # find the difference in list through binary search
         # return only if we find an index, i.e. return not -1
         index = binary_search(lst, k - lst[j])
-        if index is not -1 and index is not j:
+        if index != -1 and index != j:
             return [lst[j], k - lst[j]]
 
     return None
