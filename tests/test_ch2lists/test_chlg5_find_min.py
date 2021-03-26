@@ -1,4 +1,4 @@
-from ds_coding_interviews_in_python.ch2lists.chl5_find_min import find_minimum, find_minimum_merge_sort
+from ds_coding_interviews_in_python.ch2lists.chlg5_find_min import find_minimum, find_minimum_merge_sort
 
 
 def test_find_minimum() -> None:
