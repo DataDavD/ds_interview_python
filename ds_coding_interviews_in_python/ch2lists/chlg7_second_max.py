@@ -25,6 +25,7 @@ def find_second_maximum_2(lst: List[int]) -> Optional[int]:
     else:
         return int(second_max)
 
+
 # O(n) since traverse list just once
 def find_second_maximum_3(lst: List[int]) -> Optional[int]:
     if len(lst) < 2:

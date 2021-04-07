@@ -49,6 +49,7 @@ def merge_sort(my_list: List[int]) -> None:
             j += 1
             k += 1
 
+
 # O(n log n) since list is being split in log(n) call and
 # merging process takes linear time in each call
 def find_minimum_merge_sort(lst: List[int]) -> Optional[int]:
@@ -56,6 +57,7 @@ def find_minimum_merge_sort(lst: List[int]) -> Optional[int]:
         return None
     merge_sort(lst)  # sort list
     return lst[0]  # return first element
+
 
 # O(n) since list is iterated over just once
 def find_minimum_constant(lst: List[int]) -> Optional[int]:
@@ -66,5 +68,3 @@ def find_minimum_constant(lst: List[int]) -> Optional[int]:
         if i < minimum:
             minimum = i
     return minimum
-
-

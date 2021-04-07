@@ -1,3 +1,5 @@
+from typing import List
+
 from ds_coding_interviews_in_python.ch2lists.chlg8_rrotate import right_rotate, right_rotate_optimal
 
 
@@ -12,15 +14,16 @@ def test_right_rotate() -> None:
     expect2 = [10, 20, 30, 40, 50]
     assert right_rotate(lst2, k2) == expect2
 
-    lst3 = list()
+    lst3: List[int] = list()
     k3 = 3
-    expect3 = list()
+    expect3: List[int] = list()
     assert right_rotate(lst3, k3) == expect3
 
-    lst4 = ['right', 'rotate', 'python']
+    lst4 = ["right", "rotate", "python"]
     k4 = 4
-    expect4 = ['python', 'right', 'rotate']
+    expect4 = ["python", "right", "rotate"]
     assert right_rotate(lst4, k4) == expect4
+
 
 def test_right_rotate_optimal() -> None:
     lst = [10, 20, 30, 40, 50]
@@ -33,12 +36,12 @@ def test_right_rotate_optimal() -> None:
     expect2 = [10, 20, 30, 40, 50]
     assert right_rotate_optimal(lst2, k2) == expect2
 
-    lst3 = list()
+    lst3: List[int] = list()
     k3 = 3
-    expect3 = list()
+    expect3: List[int] = list()
     assert right_rotate_optimal(lst3, k3) == expect3
 
-    lst4 = ['right', 'rotate', 'python']
+    lst4 = ["right", "rotate", "python"]
     k4 = 4
-    expect4 = ['python', 'right', 'rotate']
+    expect4 = ["python", "right", "rotate"]
     assert right_rotate_optimal(lst4, k4) == expect4

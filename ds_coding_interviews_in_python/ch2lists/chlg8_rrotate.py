@@ -13,6 +13,7 @@ def right_rotate(lst: List[Any], k: int) -> List[Any]:
     result.extend(lst[: len(lst) - k])
     return result
 
+
 # O(n) since list slicing is in O(k) where k is # of elements sliced.
 # So, since the entire list is sliced total time complexity is O(n)
 def right_rotate_optimal(lst: List[Any], k: int) -> List[Any]:

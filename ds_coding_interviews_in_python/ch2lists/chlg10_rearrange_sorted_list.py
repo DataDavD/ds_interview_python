@@ -20,13 +20,14 @@ def max_min(lst: List[int]) -> List[int]:
         result.append(lst[len(lst) // 2])
     return result
 
+
 # O(n) but space complexity with this is constant at O(1)
-def max_mix_space_1(lst:List[int]) -> List[int]:
+def max_mix_space_1(lst: List[int]) -> List[int]:
     if len(lst) is 0:
         return []
-    max_idx = len(lst)-1 # last index
+    max_idx = len(lst) - 1  # last index
     max_ele = lst[-1] + 1
-    min_idx = 0 # first index
+    min_idx = 0  # first index
 
     for i in range(len(lst)):
         # even number means max element to append

@@ -5,13 +5,14 @@ from typing import List
 def rearrange(lst: List[int]) -> List[int]:
     if len(lst) <= 1:
         return lst
-    result = list()
+    result: List[int] = list()
     for x in range(len(lst)):
         if lst[x] < 0:
             result.insert(0, lst[x])
         else:
             result.append(lst[x])
     return result
+
 
 # O(n) since list iterated over once
 def rearrange_aux_lists(lst: List[int]) -> List[int]:
@@ -27,6 +28,7 @@ def rearrange_aux_lists(lst: List[int]) -> List[int]:
             pos.append(ele)
     # merge two lists and return
     return neg + pos
+
 
 # O(n) since list iterated over once, but O(1) aux space complexity
 # since using existing list
@@ -45,6 +47,7 @@ def rearrange_inplace(lst: List[int]) -> List[int]:
             # update the last position
             left_most_pos_el += 1
     return lst
+
 
 # O(n) since iterate over the list twice
 def rearrange_pythonic(lst: List[int]) -> List[int]:
