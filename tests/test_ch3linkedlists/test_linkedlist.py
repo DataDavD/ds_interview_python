@@ -12,4 +12,4 @@ def linked_list() -> LinkedList:
 
 
 def test_get_head(linked_list) -> None:
-    assert linked_list.get_head() == 1
+    assert linked_list.get_head().data == 10
