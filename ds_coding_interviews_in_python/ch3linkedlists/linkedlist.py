@@ -1,11 +1,11 @@
-from typing import Any, List
+from typing import Any, List, Optional
 
-from nodes import Node
+from ds_coding_interviews_in_python.ch3linkedlists.nodes import Node, DNode
 
 
 class LinkedList:
     def __init__(self):
-        self.head = None
+        self.head: Optional[Node] = None
 
     def to_list(self) -> List[Any]:
         node = self.head
@@ -16,13 +16,13 @@ class LinkedList:
         nodes.append("None")
         return nodes
 
-    def get_head(self) -> Node:
+    def get_head(self) -> Optional[Node]:
         return self.head
 
     # Insertion at Head
     def insert_at_head(self, data) -> Node:
         # Create a new node containing your specified value
-        new_node = Node(data)
+        new_node: Node = Node(data)
         # The new node points to the same node as the head
         new_node.next_element = self.head
         self.head = new_node  # Make the head point to the new node
@@ -36,7 +36,7 @@ class LinkedList:
 
     def insert_at_tail(self, value) -> None:
         # Creating a new node
-        new_node = Node(value)
+        new_node: Node = Node(value)
 
         # Check if the list is empty, if it is simply point head to new node
         if self.get_head() is None:
@@ -44,7 +44,7 @@ class LinkedList:
             return
 
         # If list not empty, traverse the list to the last node
-        temp = self.get_head()
+        temp: Node = self.get_head()
 
         while temp.next_element:
             temp = temp.next_element
@@ -72,7 +72,7 @@ class LinkedList:
 
         # Check if list is empty
         if first_ele is None:
-            print("List is empty, cannot delete head")
+            print("Linked List is empty, cannot delete head")
             return False
 
         # If list is not empty then link head to
@@ -87,10 +87,10 @@ class LinkedList:
         deleted = False
         # Check if list is empty -> return False if so
         if self.is_empty():
-            print("List is empty")
+            print("Linked List is empty")
             return deleted
-        curr_node = self.get_head()
-        prev_node = None
+        curr_node: Node = self.get_head()
+        prev_node: Node = None
         if curr_node.next_element is value:
             self.del_head()  # Delete head since value is at head
             deleted = True
@@ -120,11 +120,106 @@ class LinkedList:
     # Supplementary print function
     def print_list(self) -> bool:
         if self.is_empty():
-            print("List is Empty")
+            print("Linked List is Empty")
             return False
-        temp = self.head
+        temp: Node = self.head
         while temp.next_element is not None:
             print(temp.data, end=" -> ")
             temp = temp.next_element
         print(temp.data, "-> None")
         return True
+
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.head: Optional[DNode] = None
+
+    def get_head(self) -> Optional[DNode]:
+        return self.head
+
+    def insert_at_head(self, data) -> DNode:
+        temp_node: DNode = DNode(data)
+        if self.head is None:
+            self.head = temp_node
+            return self.head
+
+        temp_node.next_element = self.head
+        self.head.prev_element = temp_node
+        self.head = temp_node
+        return self.head
+
+    def to_list(self) -> List[Any]:
+        dnode = self.head
+        dnodes = []
+        while dnode is not None:
+            dnodes.append(dnode.data)
+            dnode = dnode.next_element
+        dnodes.append("None")
+        return dnodes
+
+    def is_empty(self) -> bool:
+        if self.head is None:
+            return True
+        else:
+            return False
+
+    def print_list(self) -> bool:
+        if self.is_empty():
+            print("Doubly Linked List is Empty")
+            return False
+        temp: DNode = self.head
+        while temp.next_element is not None:
+            print(temp.data, end=" -> ")
+            temp = temp.next_element
+        print(temp.data, "-> None")
+        return True
+
+    def del_head(self) -> bool:
+        # Check if list is empty
+        if self.head is None:
+            print("Doubly Linked List is empty, cannot delete head")
+            return False
+
+        if self.head.next_element is None:
+            self.head = None
+            print("Head deleted")
+            return True
+
+        self.head = self.head.next_element
+        self.head.prev_element = None
+        print("head deleted")
+        return True
+
+    def del_tail(self) -> bool:
+        if self.head is None:
+            print("The Doubly Linked List is empty, no element to delete")
+            return False
+        if self.head.next_element is None:
+            self.head = None
+            print("Doubly Linked List only has head. Head deleted")
+            return True
+
+        temp_node: DNode = self.head
+        while temp_node.next_element is not None:
+            temp_node = temp_node.next_element
+        temp_node.prev_element.next_element = None
+        print("Tail deleted")
+        return True
+
+    def del_value(self, value) -> bool:
+        deleted: bool = False
+        if self.head is None:
+            print("Doubly Linked List is empty")
+            return False
+
+        curr_node: DNode = self.get_head()
+        # If deletion value matches head value:
+        if curr_node.data is value:
+            # Point head to the next element of head
+            self.head = curr_node.next_element
+            if curr_node.next_element is not None and curr_node.prev_element is not None:
+                # Point next element of head to None
+                curr_node.next_element.prev_element = None
+                deleted = True
+                print(str(curr_node.data), " Deleted!")
+            return deleted

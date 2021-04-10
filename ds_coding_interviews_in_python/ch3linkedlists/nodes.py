@@ -1,11 +1,14 @@
+from typing import Any, Optional
+
+
 class Node:
     def __init__(self, data):
-        self.data = data
-        self.next_element = None
+        self.data: Any = data
+        self.next_element: Optional[Node] = None
 
 
-class DNode():
+class DNode:
     def __init__(self, data):
-        self.data = data
-        self.next_element = None
-        self.prev_element = None
+        self.data: Any = data
+        self.next_element: Optional[DNode] = None
+        self.prev_element: Optional[DNode] = None
