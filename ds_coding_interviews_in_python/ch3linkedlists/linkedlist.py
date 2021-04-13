@@ -44,7 +44,7 @@ class LinkedList:
             return
 
         # If list not empty, traverse the list to the last node
-        temp: Node = self.get_head()
+        temp: Optional[Node] = self.get_head()
 
         while temp.next_element:
             temp = temp.next_element
@@ -210,11 +210,18 @@ class DoublyLinkedList:
         deleted: bool = False
         if self.head is None:
             print("Doubly Linked List is empty")
-            return False
+            return deleted
 
         curr_node: DNode = self.get_head()
         # If deletion value matches head value:
-        if curr_node.data is value:
+        if curr_node.next_element is None:
+            if curr_node.data == value:
+                curr_node = Node
+            else:
+                print("Item not found")
+                return deleted
+
+        if curr_node.data == value:
             # Point head to the next element of head
             self.head = curr_node.next_element
             if curr_node.next_element is not None:
@@ -226,7 +233,7 @@ class DoublyLinkedList:
 
         # Traverse/search rest of list for node to delete
         while curr_node:
-            if value is curr_node.data:
+            if curr_node.data == value:
                 if curr_node.next_element:
                     # Link next node and prev node to each other
                     prev_node = curr_node.prev_element
@@ -236,6 +243,7 @@ class DoublyLinkedList:
                 else:
                     # if value matches last node:
                     curr_node.prev_element.next_element = None
+
                 deleted = True
                 break
             curr_node = curr_node.next_element
