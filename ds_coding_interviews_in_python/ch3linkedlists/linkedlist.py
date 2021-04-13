@@ -217,9 +217,31 @@ class DoublyLinkedList:
         if curr_node.data is value:
             # Point head to the next element of head
             self.head = curr_node.next_element
-            if curr_node.next_element is not None and curr_node.prev_element is not None:
+            if curr_node.next_element is not None:
                 # Point next element of head to None
                 curr_node.next_element.prev_element = None
                 deleted = True
-                print(str(curr_node.data), " Deleted!")
+                print(str(curr_node.data), " is deleted!")
             return deleted
+
+        # Traverse/search rest of list for node to delete
+        while curr_node:
+            if value is curr_node.data:
+                if curr_node.next_element:
+                    # Link next node and prev node to each other
+                    prev_node = curr_node.prev_element
+                    next_node = curr_node.next_element
+                    prev_node.next_element = next_node
+                    next_node.prev_element = prev_node
+                else:
+                    # if value matches last node:
+                    curr_node.prev_element.next_element = None
+                deleted = True
+                break
+            curr_node = curr_node.next_element
+
+        if not deleted:
+            print(str(value), " is not in list!")
+        else:
+            print(str(value), " is deleted!")
+        return deleted

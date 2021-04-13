@@ -89,7 +89,26 @@ print(ll)
 dlinked_list.del_head()
 dlinked_list.print_list()
 
+
+# Test out delete at head method
+dlinked_list.del_tail()
+dlinked_list.print_list()
+
 # Test out delete specific value
-# dlinked_list.print_list()
-# dlinked_list.del_value(5)
-# dlinked_list.print_list()
+dlinked_list = DoublyLinkedList()
+
+# Print list
+dlinked_list.print_list()
+for i in range(1, 2):
+    dlinked_list.insert_at_head(i)
+dlinked_list.print_list()
+ll = dlinked_list.to_list()
+print(ll)
+
+dlinked_list.print_list()
+dlinked_list.del_value(9)
+dlinked_list.print_list()
+dlinked_list.del_value(2)
+dlinked_list.print_list()
+dlinked_list.del_value(1)
+dlinked_list.print_list()
