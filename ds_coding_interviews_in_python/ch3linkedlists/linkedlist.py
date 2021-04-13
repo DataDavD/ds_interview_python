@@ -54,10 +54,10 @@ class LinkedList:
         temp.next_element = new_node
         return
 
-    def insert_after_item(self, x, data) -> None:
+    def insert_after_item(self, x, data) -> bool:
         if self.head is None:
             print("Linked List is Empty")
-            return
+            return False
         else:
             temp = self.head
             while temp:
@@ -137,6 +137,90 @@ class LinkedList:
             print(str(value), " deleted")
 
         return deleted
+
+    def reverse(self) -> bool:
+        if self.is_empty():
+            print("list is empty, cannot reverse")
+            return False
+        nxt = None
+        prev = None
+        curr = self.get_head()
+
+        while curr:
+            nxt = curr.next_element
+            curr.next_element = prev
+            prev = curr
+            curr = nxt
+
+            # set last ele as new head
+            self.head = prev
+        print("List reversed")
+        return True
+
+    def detect_loop(self) -> bool:
+        one_step = self.head
+        two_step = self.head
+        while one_step and two_step and two_step.next_element:
+            one_step = one_step.next_element
+            two_step = two_step.next_element.next_element
+            if one_step == two_step:
+                print("Loop detected")
+                return True
+        print("Loop not detected")
+        return False
+
+    def __len__(self) -> int:
+        # start from the first element
+        curr = self.get_head()
+        length: int = 0
+
+        # Traverse the list and count the number of nodes
+        while curr is not None:
+            length += 1
+            curr = curr.next_element
+        return length
+
+    def find_mid_brute(self) -> Optional[Any]:
+        # O(n)
+        if self.is_empty():
+            print("List is empty")
+            return None
+
+        node = self.head
+        if self.__len__() % 2 == 0:
+            mid = self.__len__() // 2
+        else:
+            mid = (self.__len__() // 2) + 1
+
+        for i in range(mid - 1):
+            node = node.next_element
+
+        print("Mid found at ", node.data)
+        return node
+
+    def find_mid_optimal(self) -> Optional[Any]:
+        # O(n) but traversing list at twice speed of brute force version of
+        # finding mid method
+        if self.is_empty():
+            print("List is empty")
+            return None
+
+        if self.head.next_element is None:
+            # only 1 element, so return it
+            print("Only 1 element in list. The element is ", self.head)
+            return self.head.data
+
+        mid_node = self.head
+        curr = self.head.next_element.next_element
+        # move fast node twice as fast as slow, so that when fast gets to end of
+        # list, then slow will be at the middle of the list
+        while curr:
+            mid_node = mid_node.next_element
+            curr = curr.next_element
+            if curr:
+                curr = curr.next_element
+        print("Mid found at ", mid_node.data)
+        return mid_node.data
 
     # Supplementary print function
     def print_list(self) -> bool:
@@ -226,9 +310,9 @@ class DoublyLinkedList:
             return False
         temp: DNode = self.head
         while temp.next_element is not None:
-            print(temp.data, end=" -> ")
+            print(temp.data, end=" <-> ")
             temp = temp.next_element
-        print(temp.data, "-> None")
+        print(temp.data, "<-> None")
         return True
 
     def del_head(self) -> bool:
@@ -310,3 +394,22 @@ class DoublyLinkedList:
         else:
             print(str(value), " is deleted!")
         return deleted
+
+    def reverse(self) -> bool:
+        if self.is_empty():
+            print("List is empty, cannot reverse")
+            return False
+
+        curr = self.head
+        nxt = curr.next_element
+        curr.next_element = None
+        curr.prev_element = nxt
+        while nxt:
+            nxt.prev_element = nxt.next_element
+            nxt.next_element = curr
+            curr = nxt
+            nxt = nxt.prev_element
+
+        self.head = curr
+        print("List reversed!")
+        return True

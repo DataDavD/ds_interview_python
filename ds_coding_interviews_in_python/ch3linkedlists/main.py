@@ -29,6 +29,12 @@ linked_list.print_list()
 linked_list.insert_at_tail(3)
 linked_list.print_list()
 
+# Test insert after method
+linked_list.print_list()
+linked_list.insert_after_item(3, 99)
+linked_list.print_list()
+
+
 # Test search method
 linked_list = LinkedList()
 print("Inserting values in list")
@@ -47,6 +53,54 @@ linked_list.print_list()
 linked_list.del_value(5)
 linked_list.print_list()
 
+# Test out reversing the list
+linked_list.print_list()
+linked_list.reverse()
+linked_list.print_list()
+
+# Test out finding mid the list
+print("testing out finding mid brute force method")
+linked_list.print_list()
+linked_list.find_mid_brute()
+linked_list.print_list()
+linked_list.del_head()
+linked_list.print_list()
+linked_list.find_mid_brute()
+print("end testing out finding mid brute force method")
+print("testing out finding mid optimal method")
+linked_list.print_list()
+linked_list.find_mid_optimal()
+linked_list.print_list()
+linked_list.del_head()
+linked_list.print_list()
+linked_list.find_mid_optimal()
+linked_list.print_list()
+print("end testing out finding mid optimal method")
+
+# Detect loop
+linked_list = LinkedList()
+
+linked_list.insert_at_head(21)
+linked_list.insert_at_head(14)
+linked_list.insert_at_head(7)
+
+# Test length method
+linked_list.print_list()
+print("length of linked list is:")
+print(len(linked_list))
+
+# Adding a loop
+head = linked_list.get_head()
+node = linked_list.get_head()
+linked_list.print_list()
+
+for i in range(4):
+    if node.next_element is None:
+        node.next_element = head.next_element
+        break
+    node = node.next_element
+linked_list.detect_loop()
+
 
 # Playing around with Doubly Linked List
 print("Playing around with Doubly Linked List")
@@ -64,17 +118,19 @@ ll = dlinked_list.to_list()
 print(ll)
 
 # Test insert at tail method
-# dlinked_list = DoublyLinkedList()
-# dlinked_list.print_list()
-# # Test insert at tail method
-# dlinked_list.insert_at_tail(0)
-# dlinked_list.print_list()
-# dlinked_list.insert_at_tail(1)
-# dlinked_list.print_list()
-# dlinked_list.insert_at_tail(2)
-# dlinked_list.print_list()
-# dlinked_list.insert_at_tail(3)
-# dlinked_list.print_list()
+dlinked_list.insert_at_tail(0)
+dlinked_list.print_list()
+dlinked_list.insert_at_tail(1)
+dlinked_list.print_list()
+dlinked_list.insert_at_tail(2)
+dlinked_list.print_list()
+dlinked_list.insert_at_tail(3)
+dlinked_list.print_list()
+
+# Test insert after method
+dlinked_list.print_list()
+dlinked_list.insert_after_item(3, 99)
+dlinked_list.print_list()
 
 # Test search method
 # dlinked_list = DoublyLinkedList()
@@ -100,4 +156,23 @@ dlinked_list.print_list()
 dlinked_list.del_value(2)
 dlinked_list.print_list()
 dlinked_list.del_value(1)
+dlinked_list.print_list()
+
+# Test out reversing list
+# Test out reversing the list
+dlinked_list.print_list()
+dlinked_list.reverse()
+dlinked_list.print_list()
+
+dlinked_list = DoublyLinkedList()
+
+# Print list
+dlinked_list.print_list()
+
+# Test insert at head method
+print("Inserting values in list")
+for i in range(1, 4):
+    dlinked_list.insert_at_head(i)
+dlinked_list.print_list()
+dlinked_list.reverse()
 dlinked_list.print_list()
