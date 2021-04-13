@@ -1,3 +1,4 @@
+import nntplib
 from typing import Any, List, Optional
 
 from ds_coding_interviews_in_python.ch3linkedlists.nodes import Node, DNode
@@ -52,6 +53,26 @@ class LinkedList:
         # Set the nextElement of the previous node to new node
         temp.next_element = new_node
         return
+
+    def insert_after_item(self, x, data) -> None:
+        if self.head is None:
+            print("Linked List is Empty")
+            return
+        else:
+            temp = self.head
+            while temp:
+                if temp.data == x:
+                    break
+                temp = temp.next_element
+            if temp is None:
+                print("item not in list")
+            else:
+                new_node = Node(data)
+                new_node.next_element = temp.next_element
+                temp.next_element = new_node
+
+            print(data, " inserted after ", x)
+            return True
 
     def search(self, value) -> bool:
         # Start from first ele
@@ -147,6 +168,42 @@ class DoublyLinkedList:
         self.head.prev_element = temp_node
         self.head = temp_node
         return self.head
+
+    def insert_at_tail(self, data) -> DNode:
+        if self.head is None:
+            new_node = DNode(data)
+            self.head = new_node
+            return self.head
+
+        temp = self.head
+        while temp.next_element:
+            temp = temp.next_element
+        new_node = DNode(data)
+        temp.next_element = new_node
+        new_node.prev_element = temp
+        return new_node
+
+    def insert_after_item(self, x, data) -> bool:
+        if self.head is None:
+            print("Doubly Linked List is Empty")
+            return False
+        else:
+            temp = self.head
+            while temp:
+                if temp.data == x:
+                    break
+                temp = temp.next_element
+            if temp is None:
+                print("item not in the list")
+            else:
+                new_node = DNode(data)
+                new_node.prev_element = temp
+                new_node.next_element = temp.next_element
+                if temp.next_element:
+                    temp.next_element.prev_element = new_node
+                temp.next_element = new_node
+            print(data, " inserted after ", x)
+            return True
 
     def to_list(self) -> List[Any]:
         dnode = self.head
