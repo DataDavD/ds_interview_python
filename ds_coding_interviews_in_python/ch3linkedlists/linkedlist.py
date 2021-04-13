@@ -1,4 +1,3 @@
-import nntplib
 from typing import Any, List, Optional
 
 from ds_coding_interviews_in_python.ch3linkedlists.nodes import Node, DNode
@@ -222,6 +221,29 @@ class LinkedList:
         print("Mid found at ", mid_node.data)
         return mid_node.data
 
+    def remove_dups(self) -> None:
+        # O(n^2) since using nested while loops
+        if self.is_empty():
+            print("list is empty, nothing to remove")
+            return
+
+        if self.head.next_element is None:
+            print("list only has 1 element")
+            return
+
+        outer = self.head
+        while outer:
+            inner = outer
+            while inner and inner.next_element:
+                if outer.data == inner.next_element.data:
+                    print("duplicate found, removing: ", outer.data)
+                    new_next_ele = inner.next_element.next_element
+                    inner.next_element = new_next_ele
+                else:
+                    inner = inner.next_element
+            outer = outer.next_element
+        return
+
     # Supplementary print function
     def print_list(self) -> bool:
         if self.is_empty():
@@ -413,3 +435,39 @@ class DoublyLinkedList:
         self.head = curr
         print("List reversed!")
         return True
+
+    def search(self, value) -> bool:
+        # Start from first ele
+        curr_node = self.get_head()
+
+        # Traverse the list
+        while curr_node:
+            if curr_node.data == value:
+                print("Found!")
+                return True  # value found
+            curr_node = curr_node.next_element
+        print("Not Found!")
+        return False  # value not found
+
+    def remove_dups(self) -> None:
+        # O(n^2) since using nested while loops
+        if self.is_empty():
+            print("list is empty, nothing to remove")
+            return
+
+        if self.head.next_element is None:
+            print("list only has 1 element")
+            return
+
+        outer = self.head
+        while outer:
+            inner = outer
+            while inner and inner.next_element:
+                if outer.data == inner.next_element.data:
+                    print("duplicate found, removing: ", outer.data)
+                    new_next_ele = inner.next_element.next_element
+                    inner.next_element = new_next_ele
+                else:
+                    inner = inner.next_element
+            outer = outer.next_element
+        return
