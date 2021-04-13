@@ -471,3 +471,14 @@ class DoublyLinkedList:
                     inner = inner.next_element
             outer = outer.next_element
         return
+
+    def __len__(self) -> int:
+        # start from the first element
+        curr = self.get_head()
+        length: int = 0
+
+        # Traverse the list and count the number of nodes
+        while curr is not None:
+            length += 1
+            curr = curr.next_element
+        return length

@@ -1,4 +1,4 @@
-from typing import Optional, Union
+from typing import Any, Optional, Union
 
 from ds_coding_interviews_in_python.ch3linkedlists.linkedlist import LinkedList, DoublyLinkedList
 
@@ -58,3 +58,29 @@ def intersect(
     else:
         print("no intersection found !")
     return result
+
+
+def find_nth_node_from_end(lst: Union[LinkedList, DoublyLinkedList], n: int) -> Any:
+    # Double Iteration method
+    # O(n)
+    if lst.is_empty():
+        print("list is empty")
+        return -1
+
+    ix_len = lst.__len__() - 1
+    pos = ix_len - n + 1
+    curr = lst.get_head()
+    count = 0
+
+    if pos < 0 or pos > ix_len:
+        print(f"parameter value provided: {n}, exceeds list length")
+        return -1
+
+    while count != pos:
+        curr = curr.next_element
+        count += 1
+
+    if curr:
+        return curr.data
+    else:
+        return -1
