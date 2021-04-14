@@ -7,17 +7,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "aspy.refactor-imports"
-version = "2.2.0"
-description = "Utilities for refactoring imports in python-like syntax."
-category = "main"
-optional = false
-python-versions = ">=3.6.1"
-
-[package.dependencies]
-cached-property = "*"
-
-[[package]]
 name = "atomicwrites"
 version = "1.4.0"
 description = "Atomic file writes."
@@ -60,14 +49,6 @@ typing-extensions = ">=3.7.4"
 [package.extras]
 colorama = ["colorama (>=0.4.3)"]
 d = ["aiohttp (>=3.3.2)", "aiohttp-cors"]
-
-[[package]]
-name = "cached-property"
-version = "1.5.2"
-description = "A decorator for caching properties in classes."
-category = "main"
-optional = false
-python-versions = "*"
 
 [[package]]
 name = "cfgv"
@@ -337,17 +318,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "seed-isort-config"
-version = "2.2.0"
-description = "Statically populate the `known_third_party` `isort` setting."
-category = "main"
-optional = false
-python-versions = ">=3.6.1"
-
-[package.dependencies]
-"aspy.refactor-imports" = "*"
-
-[[package]]
 name = "six"
 version = "1.15.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -408,16 +378,12 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "538cf73d9fb3d98ca5f96a86e2b6bf62ef3a35285528522e3751c5cfa6385101"
+content-hash = "a88a667174e4a7cc8a4a642d179d072d5623c7e523aac327c8908578a59e4e64"
 
 [metadata.files]
 appdirs = [
     {file = "appdirs-1.4.4-py2.py3-none-any.whl", hash = "sha256:a841dacd6b99318a741b166adb07e19ee71a274450e68237b4650ca1055ab128"},
     {file = "appdirs-1.4.4.tar.gz", hash = "sha256:7d5d0167b2b1ba821647616af46a749d1c653740dd0d2415100fe26e27afdf41"},
-]
-"aspy.refactor-imports" = [
-    {file = "aspy.refactor_imports-2.2.0-py2.py3-none-any.whl", hash = "sha256:7a18039d2e8be6b02b4791ce98891deb46b459b575c52ed35ab818c4eaa0c098"},
-    {file = "aspy.refactor_imports-2.2.0.tar.gz", hash = "sha256:78ca24122963fd258ebfc4a8dc708d23a18040ee39dca8767675821e84e9ea0a"},
 ]
 atomicwrites = [
     {file = "atomicwrites-1.4.0-py2.py3-none-any.whl", hash = "sha256:6d1784dea7c0c8d4a5172b6c620f40b6e4cbfdf96d783691f2e1302a7b88e197"},
@@ -429,10 +395,6 @@ attrs = [
 ]
 black = [
     {file = "black-20.8b1.tar.gz", hash = "sha256:1c02557aa099101b9d21496f8a914e9ed2222ef70336404eeeac8edba836fbea"},
-]
-cached-property = [
-    {file = "cached-property-1.5.2.tar.gz", hash = "sha256:9fa5755838eecbb2d234c3aa390bd80fbd3ac6b6869109bfc1b499f7bd89a130"},
-    {file = "cached_property-1.5.2-py2.py3-none-any.whl", hash = "sha256:df4f613cf7ad9a588cc381aaf4a512d26265ecebd5eb9e1ba12f1319eb85a6a0"},
 ]
 cfgv = [
     {file = "cfgv-3.2.0-py2.py3-none-any.whl", hash = "sha256:32e43d604bbe7896fe7c248a9c2276447dbef840feb28fe20494f62af110211d"},
@@ -673,10 +635,6 @@ regex = [
     {file = "regex-2021.4.4-cp39-cp39-win32.whl", hash = "sha256:fa4537fb4a98fe8fde99626e4681cc644bdcf2a795038533f9f711513a862ae6"},
     {file = "regex-2021.4.4-cp39-cp39-win_amd64.whl", hash = "sha256:97f29f57d5b84e73fbaf99ab3e26134e6687348e95ef6b48cfd2c06807005a07"},
     {file = "regex-2021.4.4.tar.gz", hash = "sha256:52ba3d3f9b942c49d7e4bc105bb28551c44065f139a65062ab7912bef10c9afb"},
-]
-seed-isort-config = [
-    {file = "seed_isort_config-2.2.0-py2.py3-none-any.whl", hash = "sha256:8601fb715a5a4aac39256bbf73c2da6a81f964da9c9d9897ab9074db3663526f"},
-    {file = "seed_isort_config-2.2.0.tar.gz", hash = "sha256:be4cfef8f9a3fe8ea1817069c6b624538ac0b429636ec746edeb27e98ed628c8"},
 ]
 six = [
     {file = "six-1.15.0-py2.py3-none-any.whl", hash = "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"},
