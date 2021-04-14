@@ -1,6 +1,6 @@
 from typing import Any, List, Optional
 
-from ds_coding_interviews_in_python.ch3linkedlists.nodes import Node, DNode
+from ds_coding_interviews_in_python.ch3linkedlists.nodes import DNode, Node
 
 
 class LinkedList:
@@ -375,11 +375,11 @@ class DoublyLinkedList:
             print("Doubly Linked List is empty")
             return deleted
 
-        curr_node: DNode = self.get_head()
+        curr_node: Optional[DNode] = self.get_head()
         # If deletion value matches head value:
         if curr_node.next_element is None:
             if curr_node.data == value:
-                curr_node = Node
+                curr_node = None
             else:
                 print("Item not found")
                 return deleted

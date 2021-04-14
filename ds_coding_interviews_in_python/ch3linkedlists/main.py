@@ -1,5 +1,9 @@
-from linkedlist import LinkedList, DoublyLinkedList
-from setops import union, intersect, find_nth_node_from_end
+from ds_coding_interviews_in_python.ch3linkedlists.linkedlist import DoublyLinkedList, LinkedList
+from ds_coding_interviews_in_python.ch3linkedlists.setops import (
+    find_nth_node_from_end,
+    intersect,
+    union,
+)
 
 LINE_LENGTH = 100
 STAR = "*"
@@ -308,4 +312,3 @@ lst.print_list()
 print(find_nth_node_from_end(lst, 5))
 print(find_nth_node_from_end(lst, 1))
 print(find_nth_node_from_end(lst, 10))
-
