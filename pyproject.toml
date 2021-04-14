@@ -12,7 +12,7 @@ pytest-cov = "^2.11.1"
 black = "^20.8b1"
 pre-commit = "^2.11.1"
 flake8 = "^3.8.4"
-isort = "^5.7.0"
+isort = "^5.8.0"
 seed-isort-config = "^2.2.0"
 
 [tool.poetry.dev-dependencies]
@@ -46,7 +46,7 @@ force_grid_wrap = 0
 use_parentheses = true
 line_length = 100
 indent = '    '
-known_third_party = ["pytest"]
+known_third_party = ["linkedlist", "pytest", "setops"]
 known_first_party = ["ds_coding_interviews_in_python"]
 
 [tool.pytest.ini_options]
