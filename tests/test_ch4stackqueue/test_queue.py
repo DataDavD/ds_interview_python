@@ -1,6 +1,6 @@
 import pytest
 
-from ds_coding_interviews_in_python.ch4stackqueue.queue import Queue
+from ds_coding_interviews_in_python.ch4stackqueue.queue import Queue, reverse_k
 
 
 @pytest.fixture
@@ -37,3 +37,8 @@ def test_enqueue(queue) -> None:
 def test_dequeue(queue) -> None:
     result = queue.dequeue()
     assert result == 1
+
+
+def test_reverse_k(queue) -> None:
+    result = reverse_k(queue, 5)
+    assert result.dequeue() == 5
