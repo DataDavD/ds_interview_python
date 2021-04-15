@@ -37,7 +37,9 @@ class Queue:
 
 
 def reverse_k(queue: Queue, k: int) -> Optional[Queue]:
-    """reverse_k reverses the first k elements of queue
+    """reverse_k reverses the first k elements of queue. The time complexity
+    is O(n) where n is the queue size as we iterate over the entire queue: k elements
+    are iterated over first, then (queue size - k) elements last.
 
     :param queue: Queue
     :param k: number of elements in Queue to reverse
