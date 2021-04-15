@@ -1,6 +1,6 @@
 import pytest
 
-from ds_coding_interviews_in_python.ch4stackqueue.queue import Queue, reverse_k
+from ds_coding_interviews_in_python.ch4stackqueue.queue import Queue, QueueStack, reverse_k
 
 
 @pytest.fixture
@@ -9,6 +9,14 @@ def queue() -> Queue:
     for i in range(1, 11):
         q.enqueue(i)
     return q
+
+
+@pytest.fixture
+def queue_stack() -> QueueStack:
+    qs = QueueStack()
+    for i in range(1, 11):
+        qs.enqueue(i)
+    return qs
 
 
 def test_is_empty() -> None:
@@ -57,3 +65,18 @@ def test_reverse_k_neg_k(queue) -> None:
 def test_reverse_k_too_large_k(queue) -> None:
     k = 100
     assert reverse_k(queue, k) is None
+
+
+def test_queue_stack_size(queue_stack) -> None:
+    assert queue_stack.size() == 10
+
+
+def test_queue_stack_enqueue(queue_stack) -> None:
+    queue_stack.enqueue(10)
+    assert queue_stack.size() == 11
+
+
+def test_queue_stack_dequeue(queue_stack) -> None:
+    result = queue_stack.dequeue()
+    assert result == 1
+    assert queue_stack.size() == 9

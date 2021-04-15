@@ -36,6 +36,36 @@ class Queue:
         return self.queue_list.pop(0)
 
 
+class QueueStack:
+    def __init__(self):
+        self.main_stack = Stack()
+        self.buff_stack = Stack()
+
+    def size(self):
+        return self.main_stack.size() + self.buff_stack.size()
+
+    def enqueue(self, value) -> bool:
+        """"O(1) since just pushing off main stack"""
+        self.main_stack.push(value)
+        print(f"{value} has been enqueued")
+        return True
+
+    def dequeue(self) -> Any:
+        """O(n) if temp_stack is empty, but O(1) if temp stack is not empty.
+        The solution is more efficient than using two stacks in enqueue method
+        since we just perform one transfer instead of two, and sometimes none at all"""
+        if self.main_stack.is_empty() and self.buff_stack.is_empty():
+            print("queue is empty, nothing to dequeue")
+            return None
+        elif not self.main_stack.is_empty() and self.buff_stack.is_empty():
+            while not self.main_stack.is_empty():
+                val = self.main_stack.pop()
+                self.buff_stack.push(val)
+            return self.buff_stack.pop()
+        else:
+            return self.buff_stack.pop()
+
+
 def reverse_k(queue: Queue, k: int) -> Optional[Queue]:
     """reverse_k reverses the first k elements of queue. The time complexity
     is O(n) where n is the queue size as we iterate over the entire queue: k elements
