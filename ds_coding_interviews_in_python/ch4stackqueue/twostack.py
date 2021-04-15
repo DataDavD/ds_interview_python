@@ -1,4 +1,5 @@
 import sys
+from typing import Any
 
 
 class TwoStacks:
@@ -9,7 +10,7 @@ class TwoStacks:
         self.top2 = self.size
 
     # Method to push an element x to stack1
-    def push1(self, x):
+    def push1(self, x) -> None:
 
         # There is at least one empty space for new element
         if self.top1 < self.top2 - 1:
@@ -21,7 +22,7 @@ class TwoStacks:
             sys.exit("Stack Overflow")
 
     # Method to push an element x to stack2
-    def push2(self, x):
+    def push2(self, x) -> None:
 
         # There is at least one empty space for new element
         if self.top1 < self.top2 - 1:
@@ -33,7 +34,7 @@ class TwoStacks:
             sys.exit("Stack Overflow")
 
     # Method to pop an element from first stack
-    def pop1(self):
+    def pop1(self) -> Any:
         if self.top1 >= 0:
             x = self.arr[self.top1]
             self.top1 = self.top1 - 1
@@ -43,7 +44,7 @@ class TwoStacks:
             sys.exit("Stack Underflow")
 
     # Method to pop an element from second stack
-    def pop2(self):
+    def pop2(self) -> Any:
         if self.top2 < self.size:
             x = self.arr[self.top2]
             self.top2 = self.top2 + 1
