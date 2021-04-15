@@ -42,3 +42,18 @@ def test_dequeue(queue) -> None:
 def test_reverse_k(queue) -> None:
     result = reverse_k(queue, 5)
     assert result.dequeue() == 5
+
+
+def test_reverse_k_emtpy() -> None:
+    queue = Queue()
+    assert reverse_k(queue, 5) is None
+
+
+def test_reverse_k_neg_k(queue) -> None:
+    k = -1
+    assert reverse_k(queue, k) is None
+
+
+def test_reverse_k_too_large_k(queue) -> None:
+    k = 100
+    assert reverse_k(queue, k) is None

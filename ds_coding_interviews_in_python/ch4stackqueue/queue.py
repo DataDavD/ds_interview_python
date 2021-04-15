@@ -46,6 +46,12 @@ def reverse_k(queue: Queue, k: int) -> Optional[Queue]:
     if queue.is_empty():
         print("Queue is empty, nothing to reverse")
         return None
+    if k > queue.size():
+        print(f"{k} exceeds the queues length of {queue.size()}")
+        return None
+    if k < 0:
+        print(f"{k} is negative; reverse_k function requires k be positive")
+        return None
 
     # Use stack to help with those elements that need to be reversed
     stack: Stack = Stack()
