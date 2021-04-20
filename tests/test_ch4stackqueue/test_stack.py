@@ -1,6 +1,10 @@
 import pytest
 
-from ds_coding_interviews_in_python.ch4stackqueue.stack import Stack, sort_stack
+from ds_coding_interviews_in_python.ch4stackqueue.stack import (
+    Stack,
+    sort_stack,
+    sort_stack_recursive,
+)
 
 
 @pytest.fixture
@@ -44,6 +48,41 @@ def test_sort_stack() -> None:
     stack.push(21)
     result = [5, 10, 15, 21, 100]
     stack = sort_stack(stack)
+    test_list = list()
+    for i in range(stack.size()):
+        test_list.append(stack.pop())
+    assert test_list == result
+
+
+def test_sort_stack_none() -> None:
+    stack = Stack()
+    result = list()
+    stack = sort_stack(stack)
+    test_list = list()
+    for i in range(stack.size()):
+        test_list.append(stack.pop())
+    assert test_list == result
+
+
+def test_sort_stack_recursive() -> None:
+    stack = Stack()
+    stack.push(10)
+    stack.push(100)
+    stack.push(15)
+    stack.push(5)
+    stack.push(21)
+    result = [5, 10, 15, 21, 100]
+    stack = sort_stack_recursive(stack)
+    test_list = list()
+    for i in range(stack.size()):
+        test_list.append(stack.pop())
+    assert test_list == result
+
+
+def test_sort_stack_recursive_none() -> None:
+    stack = Stack()
+    result = list()
+    stack = sort_stack_recursive(stack)
     test_list = list()
     for i in range(stack.size()):
         test_list.append(stack.pop())
