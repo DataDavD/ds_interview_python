@@ -1,10 +1,10 @@
 from ds_coding_interviews_in_python.ch4stackqueue.stack import Stack
 
 
-def eval_post_fix(exp: str) -> int:
+def eval_postfix(exp: str) -> int:
     """
     Evaluates postfix math expression.
-
+    Time complexity of this function is O(n) since we traverse all n characters once.
 
     :param exp: postfix string expression to be evaluated, no whitespace
     :return: integer result of evaluated exp
