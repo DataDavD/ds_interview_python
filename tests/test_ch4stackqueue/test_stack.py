@@ -1,6 +1,6 @@
 import pytest
 
-from ds_coding_interviews_in_python.ch4stackqueue.stack import Stack
+from ds_coding_interviews_in_python.ch4stackqueue.stack import Stack, sort_stack
 
 
 @pytest.fixture
@@ -33,3 +33,18 @@ def test_push(stack) -> None:
 def test_pop(stack) -> None:
     result = stack.pop()
     assert result == 10
+
+
+def test_sort_stack() -> None:
+    stack = Stack()
+    stack.push(10)
+    stack.push(100)
+    stack.push(15)
+    stack.push(5)
+    stack.push(21)
+    result = [5, 10, 15, 21, 100]
+    stack = sort_stack(stack)
+    test_list = list()
+    for i in range(stack.size()):
+        test_list.append(stack.pop())
+    assert test_list == result

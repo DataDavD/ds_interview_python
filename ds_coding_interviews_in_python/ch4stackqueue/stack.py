@@ -28,3 +28,26 @@ class Stack:
         if self.is_empty():
             return None
         return self.stack_list.pop()
+
+
+def sort_stack(stack: Optional[Stack]) -> Optional[Stack]:
+    """
+    Sort stack in ascending order so that when elements are popped out they are
+    shown in ascending order
+    :return: Optional[Stack
+    """
+    temp_stack = Stack()
+
+    while not stack.is_empty():
+        curr_val = stack.pop()
+        if temp_stack.top() is not None and curr_val >= int(temp_stack.top()):
+            temp_stack.push(curr_val)
+        else:
+            while not temp_stack.is_empty():
+                stack.push(temp_stack.pop())
+            temp_stack.push(curr_val)
+
+    while not temp_stack.is_empty():
+        stack.push(temp_stack.pop())
+
+    return stack
