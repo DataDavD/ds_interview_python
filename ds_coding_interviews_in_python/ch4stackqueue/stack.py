@@ -30,13 +30,15 @@ class Stack:
         return self.stack_list.pop()
 
 
-def sort_stack(stk: Optional[Stack]) -> Optional[Stack]:
+def sort_stack(stk: Stack) -> Stack:
     """
     Sort stack in ascending order so that when elements are popped out they are
-    shown in ascending order. Uses a temp stack to order elements in descending order.
+    shown in ascending order. Uses a temp stack to order elements in ascending order.
     Inner and outer loops traverse all n elements of the stack, so time complexity is
     O(n^2)
-    :return: Optional[Stack
+
+    :param stk: Stack
+    :return: Stack
     """
     temp_stack = Stack()
 
@@ -55,7 +57,7 @@ def sort_stack(stk: Optional[Stack]) -> Optional[Stack]:
     return stk
 
 
-def insert(stk: Optional[Stack], value) -> Optional[Stack]:
+def insert(stk: Stack, value) -> Stack:
     if stk.is_empty() or value < stk.top():
         stk.push(value)
     else:
@@ -66,7 +68,17 @@ def insert(stk: Optional[Stack], value) -> Optional[Stack]:
     return stk
 
 
-def sort_stack_recursive(stk: Optional[Stack]) -> Optional[Stack]:
+def sort_stack_recursive(stk: Stack) -> Stack:
+    """
+    Sort stack in ascending order so that when elements are popped out they are
+    shown in ascending order. Uses a temp stack to order elements in ascending order.
+    Function is recursively called on all n elements. So, in the worst case, there are n
+    calls to insert for each element. This pushes the time complexity to O(n^2). However,
+    unliked sort_stack function space complexity is constant, O(1).
+
+    :param stk: Stack
+    :return: Stack
+    """
 
     if stk.is_empty() is False:
         # Pop the top element off the stack
