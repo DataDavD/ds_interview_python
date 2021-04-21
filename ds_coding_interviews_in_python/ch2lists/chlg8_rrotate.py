@@ -1,5 +1,6 @@
 from typing import Any, List
 
+
 # O(n) since loop through list k times, then Python extend is O(k)
 # where k is amount you are extending list by
 def right_rotate(lst: List[Any], k: int) -> List[Any]:

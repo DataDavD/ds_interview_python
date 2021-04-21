@@ -1,4 +1,4 @@
-from ds_coding_interviews_in_python.ch4stackqueue.stack import Stack
+from ds_coding_interviews_in_python.ch4stackqueue.stack import MyStack
 
 
 def eval_postfix(exp: str) -> int:
@@ -9,7 +9,7 @@ def eval_postfix(exp: str) -> int:
     :param exp: postfix string expression to be evaluated, no whitespace
     :return: integer result of evaluated exp
     """
-    stack = Stack()
+    stack = MyStack()
     try:
         for char in exp:
             if char.isdigit():

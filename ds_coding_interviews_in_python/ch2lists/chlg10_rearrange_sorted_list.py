@@ -1,4 +1,5 @@
-from typing import List
+from typing import List, Optional
+
 
 # O(n) since iterate through list once
 def max_min(lst: List[int]) -> List[int]:
@@ -22,8 +23,8 @@ def max_min(lst: List[int]) -> List[int]:
 
 
 # O(n) but space complexity with this is constant at O(1)
-def max_mix_space_1(lst: List[int]) -> List[int]:
-    if len(lst) is 0:
+def max_mix_space_1(lst: List[int]) -> List[Optional[int]]:
+    if len(lst) == 0:
         return []
     max_idx = len(lst) - 1  # last index
     max_ele = lst[-1] + 1

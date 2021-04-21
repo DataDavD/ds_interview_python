@@ -1,5 +1,6 @@
 from typing import List, Optional
 
+
 # O(n log n) since just using Python's list sort method
 def find_second_maximum(lst: List[int]) -> Optional[int]:
     lst.sort()

@@ -1,6 +1,6 @@
 from typing import Any, Optional, Union
 
-from ds_coding_interviews_in_python.ch3linkedlists.linkedlist import LinkedList, DoublyLinkedList
+from ds_coding_interviews_in_python.ch3linkedlists.linkedlist import DoublyLinkedList, LinkedList
 
 
 def union(

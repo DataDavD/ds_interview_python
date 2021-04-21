@@ -1,5 +1,6 @@
 from typing import List
 
+
 # O(n) since loop through list once,
 # O(n) space since need another list to store result
 def rearrange(lst: List[int]) -> List[int]:

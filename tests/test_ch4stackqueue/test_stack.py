@@ -1,22 +1,22 @@
 import pytest
 
 from ds_coding_interviews_in_python.ch4stackqueue.stack import (
-    Stack,
+    MyStack,
     sort_stack,
     sort_stack_recursive,
 )
 
 
 @pytest.fixture
-def stack() -> Stack:
-    stack = Stack()
+def stack() -> MyStack:
+    stack = MyStack()
     for i in range(1, 11):
         stack.push(i)
     return stack
 
 
 def test_is_empty() -> None:
-    stack = Stack()
+    stack = MyStack()
     assert stack.is_empty() is True
 
 
@@ -40,7 +40,7 @@ def test_pop(stack) -> None:
 
 
 def test_sort_stack() -> None:
-    stack = Stack()
+    stack = MyStack()
     stack.push(10)
     stack.push(100)
     stack.push(15)
@@ -55,7 +55,7 @@ def test_sort_stack() -> None:
 
 
 def test_sort_stack_none() -> None:
-    stack = Stack()
+    stack = MyStack()
     result = list()
     stack = sort_stack(stack)
     test_list = list()
@@ -65,7 +65,7 @@ def test_sort_stack_none() -> None:
 
 
 def test_sort_stack_recursive() -> None:
-    stack = Stack()
+    stack = MyStack()
     stack.push(10)
     stack.push(100)
     stack.push(15)
@@ -80,7 +80,7 @@ def test_sort_stack_recursive() -> None:
 
 
 def test_sort_stack_recursive_none() -> None:
-    stack = Stack()
+    stack = MyStack()
     result = list()
     stack = sort_stack_recursive(stack)
     test_list = list()

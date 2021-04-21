@@ -1,5 +1,6 @@
 from typing import List, Optional
 
+
 # O(n log n) since just using Python's list sort method
 def find_minimum(lst: List[int]) -> Optional[int]:
     if len(lst) <= 0:

@@ -1,6 +1,6 @@
-from ds_coding_interviews_in_python.ch3linkedlists.linkedlist import LinkedList
-
 import pytest
+
+from ds_coding_interviews_in_python.ch3linkedlists.linkedlist import LinkedList
 
 
 @pytest.fixture

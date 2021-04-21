@@ -1,5 +1,6 @@
 from typing import List, Optional
 
+
 # 1st try brute force: O(n^2)
 def find_sum(lst: List[int], k: int) -> Optional[List[int]]:
     result: List[int] = list()
@@ -76,7 +77,6 @@ def find_sum_idx(lst: List[int], k: int) -> Optional[List[int]]:
     index1 = 0
     index2 = len(lst) - 1
     result = []
-    s = 0
     # iterate from front and back
     # move accordingly to reach the sum to be equal to k
     # returns false when the two indices meet

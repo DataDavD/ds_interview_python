@@ -1,7 +1,7 @@
 from typing import Any, List, Optional
 
 
-class Stack:
+class MyStack:
     """
     Stack uses a Python list as main structure.
     End of stack_list is considered top of stack
@@ -30,7 +30,7 @@ class Stack:
         return self.stack_list.pop()
 
 
-def sort_stack(stk: Stack) -> Stack:
+def sort_stack(stk: MyStack) -> MyStack:
     """
     Sort stack in ascending order so that when elements are popped out they are
     shown in ascending order. Uses a temp stack to order elements in ascending order.
@@ -40,7 +40,7 @@ def sort_stack(stk: Stack) -> Stack:
     :param stk: Stack
     :return: Stack
     """
-    temp_stack = Stack()
+    temp_stack = MyStack()
 
     while stk.is_empty() is False:
         curr_val = stk.pop()
@@ -57,7 +57,7 @@ def sort_stack(stk: Stack) -> Stack:
     return stk
 
 
-def insert(stk: Stack, value) -> Stack:
+def insert(stk: MyStack, value) -> MyStack:
     if stk.is_empty() or value < stk.top():
         stk.push(value)
     else:
@@ -68,7 +68,7 @@ def insert(stk: Stack, value) -> Stack:
     return stk
 
 
-def sort_stack_recursive(stk: Stack) -> Stack:
+def sort_stack_recursive(stk: MyStack) -> MyStack:
     """
     Sort stack in ascending order so that when elements are popped out they are
     shown in ascending order. Uses a temp stack to order elements in ascending order.

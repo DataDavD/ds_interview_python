@@ -1,11 +1,11 @@
 import pytest
 
-from ds_coding_interviews_in_python.ch4stackqueue.queue import Queue, QueueStack, reverse_k
+from ds_coding_interviews_in_python.ch4stackqueue.myqueue import MyQueue, QueueStack, reverse_k
 
 
 @pytest.fixture
-def queue() -> Queue:
-    q = Queue()
+def queue() -> MyQueue:
+    q = MyQueue()
     for i in range(1, 11):
         q.enqueue(i)
     return q
@@ -20,7 +20,7 @@ def queue_stack() -> QueueStack:
 
 
 def test_is_empty() -> None:
-    q = Queue()
+    q = MyQueue()
     assert q.is_empty() is True
 
 
@@ -53,7 +53,7 @@ def test_reverse_k(queue) -> None:
 
 
 def test_reverse_k_emtpy() -> None:
-    queue = Queue()
+    queue = MyQueue()
     assert reverse_k(queue, 5) is None
 
 

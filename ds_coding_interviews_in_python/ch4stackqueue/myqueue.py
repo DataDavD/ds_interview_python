@@ -1,9 +1,9 @@
 from typing import Any, List, Optional
 
-from ds_coding_interviews_in_python.ch4stackqueue.stack import Stack
+from ds_coding_interviews_in_python.ch4stackqueue.stack import MyStack
 
 
-class Queue:
+class MyQueue:
     """
     Queue uses a Python list as main structure.
     """
@@ -38,8 +38,8 @@ class Queue:
 
 class QueueStack:
     def __init__(self):
-        self.main_stack = Stack()
-        self.buff_stack = Stack()
+        self.main_stack = MyStack()
+        self.buff_stack = MyStack()
 
     def size(self):
         return self.main_stack.size() + self.buff_stack.size()
@@ -66,7 +66,7 @@ class QueueStack:
             return self.buff_stack.pop()
 
 
-def reverse_k(queue: Queue, k: int) -> Optional[Queue]:
+def reverse_k(queue: MyQueue, k: int) -> Optional[MyQueue]:
     """reverse_k reverses the first k elements of queue. The time complexity
     is O(n) where n is the queue size as we iterate over the entire queue: k elements
     are iterated over first, then (queue size - k) elements last.
@@ -86,7 +86,7 @@ def reverse_k(queue: Queue, k: int) -> Optional[Queue]:
         return None
 
     # Use stack to help with those elements that need to be reversed
-    stack: Stack = Stack()
+    stack: MyStack = MyStack()
     for i in range(k):
         stack.push(queue.dequeue())
 
