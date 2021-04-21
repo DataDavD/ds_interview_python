@@ -1,3 +1,5 @@
+from typing import List
+
 import pytest
 
 from ds_coding_interviews_in_python.ch4stackqueue.stack import (
@@ -56,7 +58,7 @@ def test_sort_stack() -> None:
 
 def test_sort_stack_none() -> None:
     stack = MyStack()
-    result = list()
+    result: List[int] = list()
     stack = sort_stack(stack)
     test_list = list()
     for i in range(stack.size()):
@@ -81,7 +83,7 @@ def test_sort_stack_recursive() -> None:
 
 def test_sort_stack_recursive_none() -> None:
     stack = MyStack()
-    result = list()
+    result: List[int] = list()
     stack = sort_stack_recursive(stack)
     test_list = list()
     for i in range(stack.size()):
