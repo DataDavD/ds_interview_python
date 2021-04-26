@@ -4,6 +4,7 @@ import pytest
 
 from ds_coding_interviews_in_python.ch4stackqueue.stack import (
     MinStack,
+    MinStack2,
     MyStack,
     sort_stack,
     sort_stack_recursive,
@@ -26,6 +27,15 @@ def min_stack() -> MinStack:
     return stack
 
 
+@pytest.fixture
+def min_stack2() -> MinStack2:
+    stack = MinStack2()
+    for i in range(1, 11):
+        stack.push(i)
+    return stack
+
+
+# Test MyStack
 def test_is_empty() -> None:
     stack = MyStack()
     assert stack.is_empty() is True
@@ -50,6 +60,7 @@ def test_pop(stack) -> None:
     assert result == 10
 
 
+# Test MinStack
 def test_min_stack_is_empty() -> None:
     stack = MinStack()
     assert stack.is_empty() is True
@@ -100,6 +111,41 @@ def test_min_stack_min_2() -> None:
 
 def test_min_stack_min_none() -> None:
     min_stack = MinStack()
+    assert min_stack.min() is None
+
+
+# Test MinStack2
+def test_min_stack2_pop(min_stack2) -> None:
+    result = min_stack2.pop()
+    assert result == 10
+
+
+def test_min_stack2_min() -> None:
+    min_stack2 = MinStack2()
+    min_stack2.push(-1)
+    min_stack2.push(-5)
+    min_stack2.push(-100)
+    min_stack2.pop()
+    min_stack2.pop()
+    min_stack2.push(-1000)
+    for i in range(1, 11):
+        min_stack2.push(i)
+    assert min_stack2.min() == -1000
+
+
+def test_min_stack2_min_2() -> None:
+    min_stack2 = MinStack2()
+    min_stack2.push(9)
+    min_stack2.push(3)
+    min_stack2.push(1)
+    min_stack2.push(4)
+    min_stack2.push(2)
+    min_stack2.push(5)
+    assert min_stack2.min() == 1
+
+
+def test_min_stack2_min_none() -> None:
+    min_stack = MinStack2()
     assert min_stack.min() is None
 
 
