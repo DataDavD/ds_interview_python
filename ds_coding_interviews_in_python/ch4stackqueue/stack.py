@@ -1,9 +1,9 @@
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Union
 
 
 class MyStack:
     """
-    Stack uses a Python list as main structure.
+    MyStack uses a Python list as main structure.
     End of stack_list is considered top of stack
     """
 
@@ -28,6 +28,51 @@ class MyStack:
         if self.is_empty():
             return None
         return self.stack_list.pop()
+
+
+class MinStack(MyStack):
+    """
+    MinStack inherits from MyStack and changes pop and push methods to construct
+    a min method that returns the minimum value in the stack in O(1) time complexity.
+    """
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.temp_stack = MyStack()
+
+    def push(self, value) -> None:
+        if self.is_empty():
+            self.stack_list.append(value)
+            self.temp_stack.push(value)
+
+        else:
+            if value > self.temp_stack.top():
+                temp_val = self.temp_stack.pop()
+                self.temp_stack.push(value)
+                if temp_val:
+                    self.temp_stack.push(temp_val)
+
+            else:
+                self.temp_stack.push(value)
+
+            self.stack_list.append(value)
+
+    def pop(self) -> Optional[Any]:
+        if self.is_empty():
+            return None
+
+        if self.top() == self.temp_stack.top():
+            self.temp_stack.pop()
+            return self.stack_list.pop()
+        else:
+            return self.stack_list.pop()
+
+    def min(self) -> Optional[Union[int, float]]:
+        if self.is_empty():
+            print("Stack is empty, no minimu, returning -1")
+            return None
+        else:
+            return self.temp_stack.top()
 
 
 def sort_stack(stk: MyStack) -> MyStack:
