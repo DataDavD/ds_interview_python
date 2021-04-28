@@ -54,24 +54,21 @@ class LinkedList:
         return
 
     def insert_after_item(self, x, data) -> bool:
-        if self.head is None:
-            print("Linked List is Empty")
+        temp = self.head
+        while temp:
+            if temp.data == x:
+                break
+            temp = temp.next_element
+        if temp is None:
+            print("item not in list")
             return False
         else:
-            temp = self.head
-            while temp:
-                if temp.data == x:
-                    break
-                temp = temp.next_element
-            if temp is None:
-                print("item not in list")
-            else:
-                new_node = Node(data)
-                new_node.next_element = temp.next_element
-                temp.next_element = new_node
+            new_node = Node(data)
+            new_node.next_element = temp.next_element
+            temp.next_element = new_node
 
-            print(data, " inserted after ", x)
-            return True
+        print(data, " inserted after ", x)
+        return True
 
     def search(self, value) -> bool:
         # Start from first ele

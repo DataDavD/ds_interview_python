@@ -7,4 +7,4 @@ def test_find_first_unique() -> None:
     lst3 = [4, 4, 3, 3]
     assert find_first_unique(lst1) == 9
     assert find_first_unique(lst2) == 5
-    assert find_first_unique(lst3) == None
+    assert find_first_unique(lst3) is None

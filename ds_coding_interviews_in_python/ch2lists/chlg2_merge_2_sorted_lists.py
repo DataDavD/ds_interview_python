@@ -1,6 +1,3 @@
-from typing import List
-
-
 # Merge list1 and list2 and return resulted list
 def merge_lists_new(lst1, lst2):
     # O(n+m) where n and m are lengths of lst1 and lst2; have to iterate over both lists
