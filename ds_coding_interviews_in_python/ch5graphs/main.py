@@ -5,6 +5,17 @@ from ds_coding_interviews_in_python.ch5graphs.graph import Graph
 
 
 def bfs_simple(g: Graph, source: Any) -> str:
+    """
+    Bread first search algo. Time complexity is O(V+E) for the number of edges and vertices
+    we traverse (since at worst case have to traverse all V and E). The space complexity is O(V)
+    since we have to keep track of at worse case we have to hold all vertices while traversing
+    the Graph.
+    V is vertices and E is edges
+
+    :param g: Graph
+    :param source: starting node
+    :return: str of path
+    """
     result: str = ""
     num_v: int = g.vertices
     if num_v == 0:
@@ -49,7 +60,7 @@ def bfs_simple_dict(graph, start_node):
     return result
 
 
-def bfs_helper(g: Graph, source: Any, visited: List[Any]) -> Tuple[str, List[Any]]:
+def bfs_helper(g: Graph, source: Any, visited: List[bool]) -> Tuple[str, List[bool]]:
     result = ""
     # Create Queue(implemented in previous lesson) for Breadth First Traversal
     # and enqueue source in it
@@ -72,7 +83,7 @@ def bfs_helper(g: Graph, source: Any, visited: List[Any]) -> Tuple[str, List[Any
     return result, visited
 
 
-def bfs(g: Graph, source: Any) -> str:
+def bfs(g: Graph, source: int) -> str:
     result: str = ""
     num_v: int = g.vertices
     if num_v == 0:
