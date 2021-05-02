@@ -129,7 +129,7 @@ def dfs_simple_dict(
         visited = set()
 
     visited.add(start_node)
-    result += start_node
+    result += str(start_node)
     print(start_node)
 
     for next_val in set(graph[start_node]) - visited:
