@@ -1,4 +1,4 @@
-from typing import Any, List, Tuple
+from typing import Any, Dict, List, Optional, Set, Tuple, Union
 
 from ds_coding_interviews_in_python.ch4stackqueue.myqueue import MyQueue
 from ds_coding_interviews_in_python.ch5graphs.graph import Graph
@@ -43,10 +43,13 @@ def bfs_simple(g: Graph, source: Any) -> str:
     return result
 
 
-def bfs_simple_dict(graph, start_node):
-    visited = [start_node]
-    queue = [start_node]
+def bfs_simple_dict(graph: Dict[Any, Any], start_node: Any) -> str:
     result = ""
+    if len(graph) == 0:
+        return "graph is empty"
+    visited = set()
+    visited.add(start_node)
+    queue = [start_node]
 
     while queue:
         s = queue.pop(0)
@@ -54,7 +57,7 @@ def bfs_simple_dict(graph, start_node):
 
         for neighbor in graph[s]:
             if neighbor not in visited:
-                visited.append(neighbor)
+                visited.add(neighbor)
                 queue.append(neighbor)
 
     return result
@@ -101,3 +104,35 @@ def bfs(g: Graph, source: int) -> str:
             result += result_new
 
     return result
+
+
+def dfs_simple_dict(
+    graph: Dict[Any, Any],
+    start_node: Any,
+    visited: Optional[Union[List[Any], Set[Any]]] = None,
+    result: str = "",
+) -> Tuple[Optional[Union[List[Any], Set[Any]]], str]:
+    """
+    DFS algo implementation
+
+    :param graph: Dict[Any, AnyP
+    :param start_node: Any: starting node for DFS algo traversal
+    :param visited: Optional[Union[List[Any], Set[Any]]]
+    :param result: str result of path taken during DFS
+    :return: final visited and result
+    """
+    if len(graph) == 0:
+        return visited, result
+    if isinstance(visited, list):
+        visited = set(visited)
+    if visited is None:
+        visited = set()
+
+    visited.add(start_node)
+    result += start_node
+    print(start_node)
+
+    for next_val in set(graph[start_node]) - visited:
+        if next_val not in visited:
+            visited, result = dfs_simple_dict(graph, next_val, visited, result)
+    return visited, result

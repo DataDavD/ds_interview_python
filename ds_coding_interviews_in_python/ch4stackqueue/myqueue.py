@@ -45,7 +45,7 @@ class QueueStack:
         return self.main_stack.size() + self.buff_stack.size()
 
     def enqueue(self, value) -> bool:
-        """"O(1) since just pushing off main stack"""
+        """ "O(1) since just pushing off main stack"""
         self.main_stack.push(value)
         print(f"{value} has been enqueued")
         return True

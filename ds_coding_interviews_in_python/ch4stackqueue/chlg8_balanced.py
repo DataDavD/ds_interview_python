@@ -36,7 +36,7 @@ def is_balanced(exp: str) -> bool:
 
 
 def is_balanced_other_solution(exp):
-    """Time complexity is O(n) """
+    """Time complexity is O(n)"""
     closing = ["}", ")", "]"]
     stack = MyStack()
     for character in exp:
