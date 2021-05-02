@@ -7,7 +7,7 @@ from ds_coding_interviews_in_python.ch5graphs.graph import Graph
 
 def bfs_simple(g: Graph, source: Any) -> str:
     """
-    Bread first search algo. Time complexity is O(V+E) for the number of edges and vertices
+    Breadth first search algo. Time complexity is O(V+E) for the number of edges and vertices
     we traverse (since at worst case have to traverse all V and E). The space complexity is O(V)
     since we have to keep track of at worse case we have to hold all vertices while traversing
     the Graph.
@@ -88,6 +88,18 @@ def bfs_helper(g: Graph, source: Any, visited: List[bool]) -> Tuple[str, List[bo
 
 
 def bfs(g: Graph, source: int) -> str:
+    """
+    Breadth first search algo. Time complexity is O(V+E) for the number of edges and vertices
+    we traverse (since at worst case have to traverse all V and E). The space complexity is O(V)
+    since we have to keep track of at worse case we have to hold all vertices while traversing
+    the Graph.
+    V is vertices and E is edges
+
+    :param g: Graph
+    :param source: starting vertex
+    :return: string result of path bfs taken,
+        Note :nding includes vertex not visited which isn't technically the correct bfs implementation, but oddly used by this course
+    """
     result: str = ""
     num_v: int = g.vertices
     if num_v == 0:
@@ -139,6 +151,39 @@ def dfs_simple_dict(
     return visited, result
 
 
+def dfs_simple(
+    graph: Dict[Any, Any],
+    start_node: Any,
+    visited: Optional[Union[List[Any], Set[Any]]] = None,
+    result: str = "",
+) -> Tuple[Optional[Union[List[Any], Set[Any]]], str]:
+    """
+    DFS algo implementation
+
+    :param graph: Dict[Any, AnyP
+    :param start_node: Any: starting node for DFS algo traversal
+    :param visited: Optional[Union[List[Any], Set[Any]]]
+    :param result: str result of path taken during DFS
+    :return: final visited and result
+    """
+    if len(graph) == 0 or start_node not in graph:
+        return visited, result
+    if isinstance(visited, list):
+        visited = set(visited)
+    if visited is None:
+        visited = set()
+
+    visited.add(start_node)
+    print(start_node)
+    result += str(start_node)
+
+    for neighbor in graph[start_node]:
+        if neighbor not in visited:
+            visited, result = dfs_simple(graph, neighbor, visited, result)
+
+    return visited, result
+
+
 def dfs_helper(g: Graph, source: int, visited: List[bool]) -> Tuple[str, List[bool]]:
     result = ""
     # Create Stack(Implemented in previous lesson) for Depth First Traversal
@@ -165,6 +210,17 @@ def dfs_helper(g: Graph, source: int, visited: List[bool]) -> Tuple[str, List[bo
 
 
 def dfs(g: Graph, source: int) -> str:
+    """
+    Depth first search algo. Time complexity is O(V+E) for the number of edges and vertices
+    we traverse (since at worst case have to traverse all V and E). Space complexity is
+    is O(V) since in the worst case we'll have to store all of the V's on the search path.
+    V is vertices and E is edges
+
+    :param g: Graph
+    :param source:
+        starting point
+    :return:
+    """
     result = ""
     num_v = g.vertices
     if num_v == 0:
@@ -184,4 +240,33 @@ def dfs(g: Graph, source: int) -> str:
         if not visited[i]:
             result_new, visited = dfs_helper(g, i, visited)
             result += result_new
+    return result
+
+
+def dfs_simple_other(g: Graph, source: Any) -> str:
+    result = ""
+    num_v = g.vertices
+    if num_v == 0:
+        return result
+
+    # Create Stack(Implemented in previous lesson) for Depth First Traversal
+    # and Push source in it
+    stack = MyStack()
+    stack.push(source)
+    visited = set()
+    # Traverse while the stack is not empty
+    while not stack.is_empty():
+        # Pop a vertex from stack and add it to the result
+        curr_node = stack.pop()
+        result += str(curr_node)
+        # Get adjacent vertices to the current node from the array
+        # and if they are not already visited then push them onto the Stack
+        temp = g.array[curr_node].get_head()
+        while temp is not None:
+            if temp.data not in visited:
+                stack.push(temp.data)
+                # visit the vertex
+                visited.add(temp.data)
+            temp = temp.next_element
+
     return result
