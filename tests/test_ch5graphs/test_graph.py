@@ -30,6 +30,11 @@ def test_bfs_empty() -> None:
     assert bfs(g, 0) == ""
 
 
+def test_bfs_simple_dict_empty() -> None:
+    graph = dict()
+    assert bfs_simple_dict(graph, "A") == "graph is empty"
+
+
 def test_bfs_simple_dict() -> None:
     # fmt: off
     graph = {
