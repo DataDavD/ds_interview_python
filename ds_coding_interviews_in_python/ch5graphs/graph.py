@@ -22,7 +22,7 @@ class Graph:
             print("|", i, end=" | => ")
             temp = self.array[i].get_head()
             while temp:
-                print("[", temp.data, end=" | -> ")
+                print("[", temp.data, end=" ] -> ")
                 temp = temp.next_element
             print("None")
 

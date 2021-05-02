@@ -3,6 +3,7 @@ from ds_coding_interviews_in_python.ch5graphs.main import (
     bfs,
     bfs_simple,
     bfs_simple_dict,
+    dfs,
     dfs_simple_dict,
 )
 
@@ -53,6 +54,24 @@ def test_dfs_simple_dict_sets() -> None:
     assert path == "ABEFGDC" or "ACFGBED"
 
 
+def test_bfs_simple_dict_empty() -> None:
+    graph = dict()
+    assert bfs_simple_dict(graph, "A") == "graph is empty"
+
+
+def test_bfs_simple_dict() -> None:
+    # fmt: off
+    graph = {
+        "A": ["B", "C"],
+        "B": ["D", "E"],
+        "C": ["F"],
+        "D": [],
+        "E": ["F"],
+        "F": []
+    }
+    assert bfs_simple_dict(graph, "A") == "ABCDEF"
+
+
 def test_dfs_simple_dict_lists() -> None:
     # fmt: off
     graph = {
@@ -74,19 +93,17 @@ def test_dfs_simple_dict_empty() -> None:
     assert path == ""
 
 
-def test_bfs_simple_dict_empty() -> None:
-    graph = dict()
-    assert bfs_simple_dict(graph, "A") == "graph is empty"
+def test_dfs() -> None:
+    g = Graph(7)
+    g.add_edge(0, 1)
+    g.add_edge(1, 2)
+    g.add_edge(1, 3)
+    g.add_edge(2, 4)
+    g.add_edge(2, 5)
+    g.add_edge(3, 6)
+    assert dfs(g, 0) == "0136254"
 
 
-def test_bfs_simple_dict() -> None:
-    # fmt: off
-    graph = {
-        "A": ["B", "C"],
-        "B": ["D", "E"],
-        "C": ["F"],
-        "D": [],
-        "E": ["F"],
-        "F": []
-    }
-    assert bfs_simple_dict(graph, "A") == "ABCDEF"
+def test_dfs_empty() -> None:
+    g = Graph(0)
+    assert dfs(g, 0) == ""

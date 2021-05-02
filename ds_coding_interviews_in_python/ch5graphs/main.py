@@ -1,6 +1,7 @@
 from typing import Any, Dict, List, Optional, Set, Tuple, Union
 
 from ds_coding_interviews_in_python.ch4stackqueue.myqueue import MyQueue
+from ds_coding_interviews_in_python.ch4stackqueue.stack import MyStack
 from ds_coding_interviews_in_python.ch5graphs.graph import Graph
 
 
@@ -121,7 +122,7 @@ def dfs_simple_dict(
     :param result: str result of path taken during DFS
     :return: final visited and result
     """
-    if len(graph) == 0:
+    if len(graph) == 0 or start_node not in graph:
         return visited, result
     if isinstance(visited, list):
         visited = set(visited)
@@ -136,3 +137,51 @@ def dfs_simple_dict(
         if next_val not in visited:
             visited, result = dfs_simple_dict(graph, next_val, visited, result)
     return visited, result
+
+
+def dfs_helper(g: Graph, source: int, visited: List[bool]) -> Tuple[str, List[bool]]:
+    result = ""
+    # Create Stack(Implemented in previous lesson) for Depth First Traversal
+    # and Push source in it
+    stack = MyStack()
+    stack.push(source)
+    visited[source] = True
+    # Traverse while the stack is not empty
+    while not stack.is_empty():
+        # Pop a vertex from stack and add it to the result
+        curr_node = stack.pop()
+        result += str(curr_node)
+        # Get adjacent vertices to the current node from the array
+        # and if they are not already visited then push them onto the Stack
+        temp = g.array[curr_node].get_head()
+        while temp is not None:
+            if not visited[temp.data]:
+                stack.push(temp.data)
+                # visit the vertex
+                visited[temp.data] = True
+            temp = temp.next_element
+
+    return result, visited
+
+
+def dfs(g: Graph, source: int) -> str:
+    result = ""
+    num_v = g.vertices
+    if num_v == 0:
+        return result
+
+    # Make a list to hold the history of visisted nodes
+    # and make anode visited whenever you push it onto the Stack
+    visited: List[bool] = []
+    for i in range(num_v):
+        visited.append(False)
+
+    # start from source
+    result, visited = dfs_helper(g, source, visited)
+
+    # visited the remaining nodes
+    for i in range(num_v):
+        if not visited[i]:
+            result_new, visited = dfs_helper(g, i, visited)
+            result += result_new
+    return result
