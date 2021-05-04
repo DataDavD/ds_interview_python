@@ -34,12 +34,12 @@ def bfs_simple(g: Graph, source: Any) -> str:
         # print(str(vertex) + " ", end="")
 
         # If not visited, mark as visited and enqueue it
-        temp = g.array[vertex].get_head()
-        while temp:
-            if temp.data not in visited:
-                visited.add(temp.data)
-                queue.enqueue(temp.data)
-            temp = temp.next_element
+        adjacent = g.array[vertex].get_head()
+        while adjacent:
+            if adjacent.data not in visited:
+                visited.add(adjacent.data)
+                queue.enqueue(adjacent.data)
+            adjacent = adjacent.next_element
 
     return result
 
