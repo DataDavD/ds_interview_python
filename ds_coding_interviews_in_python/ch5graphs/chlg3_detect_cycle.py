@@ -3,7 +3,17 @@ from typing import List
 from ds_coding_interviews_in_python.ch5graphs.graph import Graph
 
 
-def detect_cycle(g: Graph):
+def detect_cycle(g: Graph) -> bool:
+    """
+    Detects if a cycle exists in a Graph object.
+    Time complexity is O(V+E) since at worst we traverse all vertices (V) and
+    edges (E). Space complexity is O(V) since at worst we'll have to store
+    all vertices in the graph.
+
+    :param g: Graph
+    :return: bool
+        returns True if a cycle is a detected, else False
+    """
     # visited list to keep track of the nodes that have been visited
     # since the beginning of the algorithm
     visited = [False] * g.vertices

@@ -1,7 +1,7 @@
 from typing import Any, Dict
 
 from ds_coding_interviews_in_python.ch5graphs.graph import Graph
-from ds_coding_interviews_in_python.ch5graphs.main import (
+from ds_coding_interviews_in_python.ch5graphs.graph_search import (
     bfs,
     bfs_simple,
     bfs_simple_dict,
