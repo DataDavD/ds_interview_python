@@ -24,6 +24,18 @@ class Node:
         else:
             parent.right = Node(val)
 
+    def node_iter_search(self, val: Any) -> bool:
+        curr = self
+        while curr:
+            if val < curr.val:
+                curr = curr.left
+            elif val > curr.val:
+                curr = curr.right
+            else:
+                return True  # value found (i.e. equals curr.val)
+
+        return False  # value not found
+
     def node_recursive_insert(self, val: Any) -> None:
         if val < self.val:
             if self.left:
@@ -35,6 +47,20 @@ class Node:
                 self.right.node_recursive_insert(val)
             else:
                 self.right = Node(val)
+
+    def node_recursive_search(self, val: Any) -> bool:
+        if val < self.val:
+            if self.left:
+                return self.node_recursive_search(val)
+            else:
+                return False  # value not found
+        elif val > self.val:
+            if self.right:
+                return self.node_recursive_search(val)
+            else:
+                return False  # value not found
+        else:
+            return True  # value found (i.e. equals curr.val)
 
 
 class BinarySearchTree:
@@ -53,6 +79,16 @@ class BinarySearchTree:
             print("Exception occurred: ", e)
             return False
 
+    def iter_search(self, val: Any) -> bool:
+        try:
+            if self.root:
+                return self.root.node_iter_search(val)
+            else:
+                return False
+        except Exception as e:
+            print("Exception occurred: ", e)
+            return False
+
     def recursive_insert(self, val: Any) -> bool:
         try:
             if self.root:
@@ -61,6 +97,16 @@ class BinarySearchTree:
             else:
                 self.root = Node(val)
                 return True
+        except Exception as e:
+            print("Exception occurred: ", e)
+            return False
+
+    def recursive_search(self, val: Any) -> bool:
+        try:
+            if self.root:
+                return self.root.node_recursive_search(val)
+            else:
+                return False
         except Exception as e:
             print("Exception occurred: ", e)
             return False
@@ -132,6 +178,8 @@ for _ in range(15):
     # We have hidden the code for this function but it is available for use!
     display(BST.root)
     print("\n")
+print(BST.iter_search(50))  # Will print True since 50 is the root
+print(BST.iter_search(111))  # May or may not be True. Check the tree!
 
 BST = BinarySearchTree(50)
 for _ in range(15):
@@ -141,3 +189,5 @@ for _ in range(15):
     # We have hidden the code for this function but it is available for use!
     display(BST.root)
     print("\n")
+print(BST.recursive_search(50))  # Will print True since 50 is the root
+print(BST.recursive_search(111))  # May or may not be True. Check the tree!
