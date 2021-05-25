@@ -1,6 +1,12 @@
 import random
 
-from ds_coding_interviews_in_python.ch6trees.bst import BinarySearchTree, display
+from ds_coding_interviews_in_python.ch6trees.bst import (
+    BinarySearchTree,
+    display,
+    traverse_in_order,
+    traverse_post_order,
+    traverse_pre_order,
+)
 
 BST = BinarySearchTree(50)
 for _ in range(15):
@@ -40,3 +46,17 @@ display(BST.root)
 BST.delete(-2)
 print("after deletion:")
 display(BST.root)
+
+# traversal
+
+BST = BinarySearchTree(6)
+BST.iter_insert(4)
+BST.iter_insert(9)
+BST.iter_insert(5)
+BST.iter_insert(2)
+BST.iter_insert(8)
+BST.iter_insert(12)
+
+traverse_pre_order(BST.root)
+traverse_post_order(BST.root)
+traverse_in_order(BST.root)

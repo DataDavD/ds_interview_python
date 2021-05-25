@@ -63,6 +63,13 @@ class Node:
         else:
             return True  # value found (i.e. equals curr.val)
 
+    def copy(self, node2: N) -> None:  # When `self` needs to be modified
+        self.val = node2.val
+        if node2.left:
+            self.left = node2.left
+        if node2.right:
+            self.right = node2.right
+
     def delete(self, val: Any):
         if val < self.val:
             if self.left:
@@ -102,6 +109,85 @@ class Node:
                 self.right = self.right.delete(current.val)
 
         return self
+
+    def node_delete(self, val: Any) -> bool:
+        # case 1: Tree is empty
+        if self is None:
+            return False
+
+        # Searching for the given value
+        node = self
+        parent: Node = node
+        while node and node.val != val:
+            if val < node.val:
+                node = node.left
+            else:
+                node = node.right
+
+        # case 2: If data is not found
+        if node is None or node.val != val:
+            return False
+
+        # case 3: leaf node
+        elif node.left is None and node.right is None:
+            if val < parent.val:
+                parent.left = None
+            else:
+                parent.right = None
+            return True
+
+        # case 4: node has left child only
+        elif node.left and node.right is None:
+            if parent is None:  # When node is root
+                """
+                Have to create a deepcopy because 'self' is a local variable
+                and changing it will not overwrite 'root' in the
+                binarySearchTree class
+                """
+                self.copy(self.left)
+                self.left = None  # Setting the left child to `None`
+            elif val < parent.val:
+                parent.left = node.left
+            else:
+                parent.right = node.left
+            return True
+
+            # case 5: node has right child only
+        elif node.right and node.left is None:
+            if parent is None:  # When node is root
+                """
+                Have to create a deepcopy because 'self' is a local variable
+                and changing it will not overwrite 'root' in the
+                binarySearchTree class
+                """
+                self.copy(self.right)
+                self.right = None  # Setting the right child to `None`
+            elif val < parent.val:
+                parent.left = node.right
+            else:
+                parent.right = node.right
+            return True
+
+        # case 6: node has two children
+        else:
+            replace_node_parent = node
+            replace_node = node.right
+            while replace_node.left:
+                replace_node_parent = replace_node
+                replace_node = replace_node.left
+
+            node.val = replace_node.val
+            if replace_node.right:
+                if replace_node_parent.val > replace_node.val:
+                    replace_node_parent.left = replace_node.right
+            elif replace_node_parent.val < replace_node.val:
+                replace_node_parent.right = replace_node.right
+            else:
+                if replace_node.val < replace_node_parent.val:
+                    replace_node_parent.left = None
+                else:
+                    replace_node_parent.right = None
+            return True
 
 
 class BinarySearchTree:
@@ -162,6 +248,27 @@ class BinarySearchTree:
         except Exception as e:
             print("Exception occurred: ", e)
             return False
+
+
+def traverse_pre_order(node: Node) -> None:
+    if node is not None:
+        print(node.val)
+        traverse_pre_order(node.left)
+        traverse_pre_order(node.right)
+
+
+def traverse_post_order(node: Node) -> None:
+    if node is not None:
+        traverse_post_order(node.left)
+        traverse_post_order(node.right)
+        print(node.val)
+
+
+def traverse_in_order(node: Node) -> None:
+    if node is not None:
+        traverse_post_order(node.left)
+        print(node.val)
+        traverse_post_order(node.right)
 
 
 def _display_aux(node):
