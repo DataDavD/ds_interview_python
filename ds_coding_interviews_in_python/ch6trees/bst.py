@@ -1,5 +1,6 @@
-import random
-from typing import Any, Optional
+from typing import Any, Optional, TypeVar
+
+N = TypeVar("N", bound="Node")
 
 
 class Node:
@@ -62,6 +63,46 @@ class Node:
         else:
             return True  # value found (i.e. equals curr.val)
 
+    def delete(self, val: Any):
+        if val < self.val:
+            if self.left:
+                self.left = self.left.delete(val)
+            else:
+                print(str(val) + " not found in the tree")
+                return self
+        elif val > self.val:
+            if self.right:
+                self.right = self.right.delete(val)
+            else:
+                print(str(val) + " not found in the tree")
+                return self
+        else:
+            # deleting node with no children
+            if self.left is None and self.right is None:
+                # self = None
+                return None
+            # deleting node with right child
+            elif self.left is None:
+                tmp = self.right
+                # self = None
+                return tmp
+            # deleting node with left child
+            elif self.right is None:
+                tmp = self.left
+                # self = None
+                return tmp
+            # deleting node with two children
+            else:
+                # first get the inorder successor
+                current = self.right
+                # loop down to find the leftmost leaf
+                while current.left is not None:
+                    current = current.left
+                self.val = current.val
+                self.right = self.right.delete(current.val)
+
+        return self
+
 
 class BinarySearchTree:
     def __init__(self, val: Any) -> None:
@@ -105,6 +146,17 @@ class BinarySearchTree:
         try:
             if self.root:
                 return self.root.node_recursive_search(val)
+            else:
+                return False
+        except Exception as e:
+            print("Exception occurred: ", e)
+            return False
+
+    def delete(self, val: Any) -> bool:
+        try:
+            if self.root:
+                self.root = self.root.delete(val)
+                return True
             else:
                 return False
         except Exception as e:
@@ -170,24 +222,41 @@ def display(node: Node) -> None:
         print(line)
 
 
-BST = BinarySearchTree(50)
-for _ in range(15):
-    ele = random.randint(0, 100)
-    print("Inserting " + str(ele) + ":")
-    BST.iter_insert(ele)
-    # We have hidden the code for this function but it is available for use!
-    display(BST.root)
-    print("\n")
-print(BST.iter_search(50))  # Will print True since 50 is the root
-print(BST.iter_search(111))  # May or may not be True. Check the tree!
+# BST = BinarySearchTree(50)
+# for _ in range(15):
+#     ele = random.randint(0, 100)
+#     print("Inserting " + str(ele) + ":")
+#     BST.iter_insert(ele)
+#     # We have hidden the code for this function but it is available for use!
+#     display(BST.root)
+#     print("\n")
+# print(BST.iter_search(50))  # Will print True since 50 is the root
+# print(BST.iter_search(111))  # May or may not be True. Check the tree!
+#
+# BST = BinarySearchTree(50)
+# for _ in range(15):
+#     ele = random.randint(0, 100)
+#     print("Inserting " + str(ele) + ":")
+#     BST.recursive_insert(ele)
+#     # We have hidden the code for this function but it is available for use!
+#     display(BST.root)
+#     print("\n")
+# print(BST.recursive_search(50))  # Will print True since 50 is the root
+# print(BST.recursive_search(111))  # May or may not be True. Check the tree!
 
-BST = BinarySearchTree(50)
-for _ in range(15):
-    ele = random.randint(0, 100)
-    print("Inserting " + str(ele) + ":")
-    BST.recursive_insert(ele)
-    # We have hidden the code for this function but it is available for use!
-    display(BST.root)
-    print("\n")
-print(BST.recursive_search(50))  # Will print True since 50 is the root
-print(BST.recursive_search(111))  # May or may not be True. Check the tree!
+BST = BinarySearchTree(6)
+BST.iter_insert(3)
+BST.iter_insert(2)
+BST.iter_insert(4)
+BST.iter_insert(-1)
+BST.iter_insert(1)
+BST.iter_insert(-2)
+BST.iter_insert(8)
+BST.iter_insert(7)
+
+print("before deletion:")
+display(BST.root)
+
+BST.delete(-2)
+print("after deletion:")
+display(BST.root)

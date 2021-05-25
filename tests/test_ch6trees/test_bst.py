@@ -53,3 +53,19 @@ def test_bst_recursive_search_false(bst) -> None:
 
 def test_bst_recursive_search_except_false(bst) -> None:
     assert bst.recursive_search("921*-8--4+") is False
+
+
+def test_bst_delete() -> None:
+    bst = BinarySearchTree(5)
+    bst.iter_insert(10)
+    bst.iter_insert(4)
+    bst.iter_insert(6)
+    bst.iter_insert(12)
+    bst.iter_insert(2)
+
+    assert bst.delete(2) is True
+    assert bst.delete(10) is True
+    assert bst.delete(4) is True
+    assert bst.delete(5) is True
+    assert bst.delete(20) is True
+    assert bst.delete("921*-8--4+") is False
