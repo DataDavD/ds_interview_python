@@ -1,14 +1,14 @@
 from typing import Any, Optional, TypeVar
 
-N = TypeVar("N", bound="Node")
+N = TypeVar("N", bound="BSTNode")
 
 
-class Node:
+class BSTNode:
     def __init__(self, val: Any) -> None:
         self.val = val
-        self.left: Optional[Node] = None
-        self.right: Optional[Node] = None
-        self.parent: Optional[Node] = None
+        self.left: Optional[BSTNode] = None
+        self.right: Optional[BSTNode] = None
+        self.parent: Optional[BSTNode] = None
 
     def node_iter_insert(self, val: Any) -> None:
         curr = self
@@ -21,9 +21,9 @@ class Node:
                 curr = curr.right
 
         if val < parent.val:
-            parent.left = Node(val)
+            parent.left = BSTNode(val)
         else:
-            parent.right = Node(val)
+            parent.right = BSTNode(val)
 
     def node_iter_search(self, val: Any) -> bool:
         curr = self
@@ -42,12 +42,12 @@ class Node:
             if self.left:
                 self.left.node_recursive_insert(val)
             else:
-                self.left = Node(val)
+                self.left = BSTNode(val)
         else:
             if self.right:
                 self.right.node_recursive_insert(val)
             else:
-                self.right = Node(val)
+                self.right = BSTNode(val)
 
     def node_recursive_search(self, val: Any) -> bool:
         if val < self.val:
@@ -117,7 +117,7 @@ class Node:
 
         # Searching for the given value
         node = self
-        parent: Node = node
+        parent: BSTNode = node
         while node and node.val != val:
             if val < node.val:
                 node = node.left
@@ -192,7 +192,7 @@ class Node:
 
 class BinarySearchTree:
     def __init__(self, val: Any) -> None:
-        self.root = Node(val)
+        self.root = BSTNode(val)
 
     def iter_insert(self, val: Any) -> bool:
         try:
@@ -200,7 +200,7 @@ class BinarySearchTree:
                 self.root.node_iter_insert(val)
                 return True
             else:
-                self.root = Node(val)
+                self.root = BSTNode(val)
                 return True
         except Exception as e:
             print("Exception occurred: ", e)
@@ -222,7 +222,7 @@ class BinarySearchTree:
                 self.root.node_recursive_insert(val)
                 return True
             else:
-                self.root = Node(val)
+                self.root = BSTNode(val)
                 return True
         except Exception as e:
             print("Exception occurred: ", e)
@@ -250,21 +250,21 @@ class BinarySearchTree:
             return False
 
 
-def traverse_pre_order(node: Node) -> None:
+def traverse_pre_order(node: BSTNode) -> None:
     if node is not None:
         print(node.val)
         traverse_pre_order(node.left)
         traverse_pre_order(node.right)
 
 
-def traverse_post_order(node: Node) -> None:
+def traverse_post_order(node: BSTNode) -> None:
     if node is not None:
         traverse_post_order(node.left)
         traverse_post_order(node.right)
         print(node.val)
 
 
-def traverse_in_order(node: Node) -> None:
+def traverse_in_order(node: BSTNode) -> None:
     if node is not None:
         traverse_post_order(node.left)
         print(node.val)
@@ -323,7 +323,7 @@ def _display_aux(node):
     return lines, n + m + u, max(p, q) + 2, n + u // 2
 
 
-def display(node: Node) -> None:
+def display(node: BSTNode) -> None:
     lines, _, _, _ = _display_aux(node)
     for line in lines:
         print(line)
