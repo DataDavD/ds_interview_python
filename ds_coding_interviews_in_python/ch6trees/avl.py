@@ -13,6 +13,7 @@ class AVLNode:
 class AVLTree:
     # Function to insert a node
     def insert_node(self, root: Optional[AVLNode], val: Any) -> AVLNode:
+        """Time complexity is O(log n)"""
         # Find the correct location and insert the node
         if not root:
             return AVLNode(val)
@@ -43,7 +44,7 @@ class AVLTree:
 
     # Function to delete a node
     def delete_node(self, root: Optional[AVLNode], val: Any) -> Optional[AVLNode]:
-
+        """Time complexity is O(log n)"""
         # Find the node to be deleted and remove it
         if not root:
             return root
@@ -51,7 +52,7 @@ class AVLTree:
             root.left = self.delete_node(root.left, val)
         elif val > root.val:
             root.right = self.delete_node(root.right, val)
-        else:
+        else:  # found value to delete
             if root.left is None:
                 temp: Optional[AVLNode] = root.right
                 root = None
