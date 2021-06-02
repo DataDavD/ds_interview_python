@@ -3,7 +3,7 @@ import random
 import pytest
 
 from ds_coding_interviews_in_python.ch6trees.bst import BinarySearchTree
-from ds_coding_interviews_in_python.ch6trees.chlg1_min_val import find_min
+from ds_coding_interviews_in_python.ch6trees.chlg1_min_val import find_min_iter, find_min_recursive
 
 
 @pytest.fixture
@@ -17,5 +17,9 @@ def bst() -> BinarySearchTree:
     return bst
 
 
-def test_find_min(bst) -> None:
-    assert find_min(bst.root) == -20
+def test_find_min_iter(bst) -> None:
+    assert find_min_iter(bst.root) == -20
+
+
+def test_find_min_recursive(bst) -> None:
+    assert find_min_recursive(bst.root) == -20
