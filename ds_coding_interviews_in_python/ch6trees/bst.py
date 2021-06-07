@@ -271,6 +271,12 @@ def traverse_in_order(node: BSTNode) -> None:
         traverse_in_order(node.right)
 
 
+def count_bst_nodes(node: Optional[BSTNode]):
+    if node is None:
+        return 0
+    return 1 + count_bst_nodes(node.left) + count_bst_nodes(node.right)
+
+
 def _display_aux(node):
     """
     Returns list of strings, width, height,

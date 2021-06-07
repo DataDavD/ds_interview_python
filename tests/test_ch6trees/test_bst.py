@@ -2,7 +2,7 @@ import random
 
 import pytest
 
-from ds_coding_interviews_in_python.ch6trees.bst import BinarySearchTree
+from ds_coding_interviews_in_python.ch6trees.bst import BinarySearchTree, count_bst_nodes
 
 
 @pytest.fixture
@@ -53,6 +53,14 @@ def test_bst_recursive_search_false(bst) -> None:
 
 def test_bst_recursive_search_except_false(bst) -> None:
     assert bst.recursive_search("921*-8--4+") is False
+
+
+def test_bst_node_count(bst) -> None:
+    assert count_bst_nodes(bst.root) == 6
+
+
+def test_bst_node_count_zero() -> None:
+    assert count_bst_nodes(None) == 0
 
 
 def test_bst_delete() -> None:
