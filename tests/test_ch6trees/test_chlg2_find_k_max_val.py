@@ -28,3 +28,7 @@ def test_find_k_max_val_iter_k_zero(bst) -> None:
 
 def test_find_k_max_val_iter_k_too_great(bst) -> None:
     assert find_k_max_val_iter(bst.root, 10) is None
+
+
+def test_find_k_max_val_iter_k_is_none(bst) -> None:
+    assert find_k_max_val_iter(bst.root, None) is None

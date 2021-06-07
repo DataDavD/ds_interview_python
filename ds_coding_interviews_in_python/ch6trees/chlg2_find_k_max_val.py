@@ -6,6 +6,8 @@ from ds_coding_interviews_in_python.ch6trees.bst import BSTNode
 def find_k_max_val_iter(root: BSTNode, k: Optional[int]) -> Optional[int]:
     """Time complexity is O(n) since with traverse in order helper we have to
     always traverse the entire tree before selecting the k-th max value"""
+    if k is None:
+        return None
     tree: List[int] = list()
     traverse_in_order_helper(root, tree)
     if len(tree) - k >= 0 and k > 0:  # check that k is valid
