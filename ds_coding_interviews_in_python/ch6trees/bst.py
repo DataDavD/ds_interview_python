@@ -266,9 +266,9 @@ def traverse_post_order(node: BSTNode) -> None:
 
 def traverse_in_order(node: BSTNode) -> None:
     if node is not None:
-        traverse_post_order(node.left)
+        traverse_in_order(node.left)
         print(node.val)
-        traverse_post_order(node.right)
+        traverse_in_order(node.right)
 
 
 def _display_aux(node):
