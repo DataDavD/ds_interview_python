@@ -274,6 +274,7 @@ def traverse_in_order(node: BSTNode) -> None:
 def count_bst_nodes(node: Optional[BSTNode]):
     if node is None:
         return 0
+
     return 1 + count_bst_nodes(node.left) + count_bst_nodes(node.right)
 
 

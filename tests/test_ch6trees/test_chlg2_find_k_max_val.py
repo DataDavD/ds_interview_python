@@ -18,6 +18,23 @@ def bst() -> BinarySearchTree:
     return bst
 
 
+# Use with commented out tests below, code currently needs work to fix/run
+# @pytest.fixture
+# def counter() -> None:
+#     print("\nsetting up global var counter")
+#     counter = 0
+#     yield counter
+#     print("finishing up test set up counter")
+#
+#
+# @pytest.fixture
+# def current_max() -> None:
+#     print("\nsetting up global var curr max")
+#     current_max = None
+#     yield current_max
+#     print("finishing up test curr max")
+
+
 def test_find_k_max_val_iter(bst) -> None:
     assert find_k_max_val_iter(bst.root, 3) == 20
 
@@ -32,3 +49,21 @@ def test_find_k_max_val_iter_k_too_great(bst) -> None:
 
 def test_find_k_max_val_iter_k_is_none(bst) -> None:
     assert find_k_max_val_iter(bst.root, None) is None
+
+
+# Deal with later since these tests don't run properly since
+# they make use of global variables
+# def test_find_k_max_val_recursive(bst, counter, current_max) -> None:
+#     assert find_k_max_val_recursive(bst.root, 3) == 20
+#
+#
+# def test_find_k_max_val_recursive_k_zero(bst, counter, current_max) -> None:
+#     assert find_k_max_val_recursive(bst.root, 0) is None
+#
+#
+# def test_find_k_max_val_recursive_k_too_great(bst, counter, current_max) -> None:
+#     assert find_k_max_val_recursive(bst.root, 10) is None
+#
+#
+# def test_find_k_max_val_recursive_k_is_none(bst, counter, current_max) -> None:
+#     assert find_k_max_val_recursive(bst.root, None) is None
