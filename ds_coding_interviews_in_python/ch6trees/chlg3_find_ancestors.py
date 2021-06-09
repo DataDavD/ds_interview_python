@@ -3,16 +3,14 @@ from typing import List, Optional
 from ds_coding_interviews_in_python.ch6trees.bst import BSTNode
 
 
-def find_ancestors_recursive(root: BSTNode, k: Optional[int]) -> List[int]:
+def find_ancestors_recursive(root: BSTNode, k: int) -> List[Optional[int]]:
     """Time complexity is O(n) since it iterates over all the nodes of the tree"""
     result: List[int] = []
     find_ancestors_recursive_helper(root, k, result)
     return result
 
 
-def find_ancestors_recursive_helper(
-    root: Optional[BSTNode], k: Optional[int], result: List[int]
-) -> bool:
+def find_ancestors_recursive_helper(root: Optional[BSTNode], k: int, result: List[int]) -> bool:
     if root is None:
         return False
     elif root.val == k:
@@ -26,3 +24,22 @@ def find_ancestors_recursive_helper(
         result.append(root.val)
         return True
     return False
+
+
+def find_ancestors_iter(root: BSTNode, k: int) -> List[Optional[int]]:
+    """Time complexity is O(log n) since we are just traversing the path to k"""
+    ancestors: List[Optional[int]] = list()
+    current = root
+    if root is None:  # if root doesn't exist return empty list
+        return ancestors
+
+    while current:
+        if k > current.val:
+            ancestors.append(current.val)
+            current = current.right
+        elif k < current.val:
+            ancestors.append(current.val)
+            current = current.left
+        else:
+            return ancestors[::-1]
+    return []

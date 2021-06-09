@@ -1,7 +1,10 @@
 import pytest
 
 from ds_coding_interviews_in_python.ch6trees.bst import BinarySearchTree
-from ds_coding_interviews_in_python.ch6trees.chlg3_find_ancestors import find_ancestors_recursive
+from ds_coding_interviews_in_python.ch6trees.chlg3_find_ancestors import (
+    find_ancestors_iter,
+    find_ancestors_recursive,
+)
 
 
 @pytest.fixture
@@ -30,3 +33,17 @@ def test_find_ancestors_recursive_root_only() -> None:
 
 def test_find_ancestors_recursive_not_found(bst) -> None:
     assert find_ancestors_recursive(bst.root, 100) == []
+
+
+def test_find_ancestors_iter(bst) -> None:
+    expect = [21, 20, 15, 10, 7, 5]
+    assert find_ancestors_iter(bst.root, 25) == expect
+
+
+def test_find_ancestors_iter_root_only() -> None:
+    bst = BinarySearchTree(5)
+    assert find_ancestors_iter(bst.root, 5) == []
+
+
+def test_find_ancestors_iter_not_ound(bst) -> None:
+    assert find_ancestors_iter(bst.root, 100) == []
