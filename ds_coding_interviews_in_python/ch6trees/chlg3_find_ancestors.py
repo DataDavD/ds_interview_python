@@ -34,12 +34,12 @@ def find_ancestors_iter(root: BSTNode, k: int) -> List[Optional[int]]:
         return ancestors
 
     while current:
-        if k > current.val:
+        if k > current.val:  # k is greater than current.val
             ancestors.append(current.val)
             current = current.right
-        elif k < current.val:
+        elif k < current.val:  # k is less than current.val
             ancestors.append(current.val)
             current = current.left
-        else:
+        else:  # we found k, reverse list of ancestors from k to root and return list
             return ancestors[::-1]
-    return list()
+    return list()  # we didn't find k, so return empty list
