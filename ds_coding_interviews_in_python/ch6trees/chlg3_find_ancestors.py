@@ -42,4 +42,4 @@ def find_ancestors_iter(root: BSTNode, k: int) -> List[Optional[int]]:
             current = current.left
         else:
             return ancestors[::-1]
-    return []
+    return list()

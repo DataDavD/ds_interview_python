@@ -28,11 +28,11 @@ def test_find_ancestors_recursive(bst) -> None:
 
 def test_find_ancestors_recursive_root_only() -> None:
     bst = BinarySearchTree(5)
-    assert find_ancestors_recursive(bst.root, 5) == []
+    assert find_ancestors_recursive(bst.root, 5) == list()
 
 
 def test_find_ancestors_recursive_not_found(bst) -> None:
-    assert find_ancestors_recursive(bst.root, 100) == []
+    assert find_ancestors_recursive(bst.root, 100) == list()
 
 
 def test_find_ancestors_iter(bst) -> None:
@@ -42,8 +42,8 @@ def test_find_ancestors_iter(bst) -> None:
 
 def test_find_ancestors_iter_root_only() -> None:
     bst = BinarySearchTree(5)
-    assert find_ancestors_iter(bst.root, 5) == []
+    assert find_ancestors_iter(bst.root, 5) == list()
 
 
-def test_find_ancestors_iter_not_ound(bst) -> None:
-    assert find_ancestors_iter(bst.root, 100) == []
+def test_find_ancestors_iter_not_found(bst) -> None:
+    assert find_ancestors_iter(bst.root, 100) == list()
