@@ -4,6 +4,7 @@ from ds_coding_interviews_in_python.ch6trees.bst import BSTNode
 
 
 def find_height(root: Optional[BSTNode]) -> int:
+    """Time complexity is O(n) since we visit all nodes"""
     if root is None:
         return -1
 
