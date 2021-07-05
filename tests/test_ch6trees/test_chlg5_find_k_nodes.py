@@ -18,6 +18,11 @@ def test_find_k_nodes_k_is_2(bst) -> None:
     assert find_k_nodes(bst.root, 2) == expect
 
 
+def test_find_k_nodes_k_is_3(bst) -> None:
+    expect = [15]
+    assert find_k_nodes(bst.root, 3) == expect
+
+
 def test_find_k_nodes_k_is_4(bst) -> None:
     expect = [20]
     assert find_k_nodes(bst.root, 4) == expect
