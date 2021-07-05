@@ -28,6 +28,11 @@ def test_find_k_nodes_k_is_4(bst) -> None:
     assert find_k_nodes(bst.root, 4) == expect
 
 
+def test_find_k_nodes_k_is_5(bst) -> None:
+    expect = [21]
+    assert find_k_nodes(bst.root, 5) == expect
+
+
 def test_find_k_nodes_root_is_none() -> None:
     expect: List[Any] = list()
     assert find_k_nodes(None, 1) == expect
