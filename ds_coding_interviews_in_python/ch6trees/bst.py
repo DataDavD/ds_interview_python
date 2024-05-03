@@ -17,8 +17,10 @@ class BSTNode:
             parent = curr
             if val < curr.val:
                 curr = curr.left
-            else:
+            elif val > curr.val:
                 curr = curr.right
+            else:
+                return  # value already exists
 
         if val < parent.val:
             parent.left = BSTNode(val)
@@ -43,11 +45,13 @@ class BSTNode:
                 self.left.node_recursive_insert(val)
             else:
                 self.left = BSTNode(val)
-        else:
+        elif val > self.val:
             if self.right:
                 self.right.node_recursive_insert(val)
             else:
                 self.right = BSTNode(val)
+        else:
+            return  # value already exists
 
     def node_recursive_search(self, val: Any) -> bool:
         if val < self.val:

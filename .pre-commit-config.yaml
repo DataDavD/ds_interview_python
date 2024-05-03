@@ -1,25 +1,21 @@
 repos:
   - repo: https://github.com/timothycrosley/isort
-    rev: 5.8.0
+    rev: 5.13.2
     hooks:
       - id: isort
         additional_dependencies: [toml]
   - repo: https://github.com/psf/black
-    rev: 19.10b0
+    rev: 24.4.2
     hooks:
       - id: black
-        language_version: python3.9
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.3
-    hooks:
-      - id: flake8
-        additional_dependencies: [flake8-typing-imports==1.6.0]
+        language_version: python3.11
   - repo: local
     hooks:
       - id: mypy
         name: mypy
         stages: [commit]
-        language: system
+        language: python
+        langauge_version: python3.11
         entry: poetry run mypy --ignore-missing-imports --no-strict-optional .
         types: [python]
         pass_filenames: false

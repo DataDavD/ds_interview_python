@@ -5,12 +5,12 @@ description = "Repo for Educative.io course Data Structures in Coding Interviews
 authors = ["David Dansby <ddansby89@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
-mypy = "^0.812"
+python = "^3.11"
+mypy = "^1.9.0"
 coverage = "^5.5"
 pytest-cov = "^2.11.1"
 black = "^21.4b2"
-pre-commit = "^2.11.1"
+pre-commit = "^3.7.1"
 flake8 = "^3.8.4"
 isort = "^5.8.0"
 

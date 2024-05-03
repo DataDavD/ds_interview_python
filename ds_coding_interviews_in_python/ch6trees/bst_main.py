@@ -56,11 +56,26 @@ BST.iter_insert(5)
 BST.iter_insert(2)
 BST.iter_insert(8)
 BST.iter_insert(12)
+BST.iter_insert(8)  # make sure duplicates node values don't get inserted
 
 traverse_pre_order(BST.root)
 traverse_post_order(BST.root)
 traverse_in_order(BST.root)
+display(BST.root)
 
+BST = BinarySearchTree(6)
+BST.recursive_insert(4)
+BST.recursive_insert(5)
+BST.recursive_insert(9)
+BST.recursive_insert(2)
+BST.recursive_insert(8)
+BST.recursive_insert(12)
+BST.recursive_insert(8)  # make sure duplicates node values don't get inserted
+
+traverse_pre_order(BST.root)
+traverse_post_order(BST.root)
+traverse_in_order(BST.root)
+display(BST.root)
 
 bst_2 = BinarySearchTree(6)
 bst_2.iter_insert(4)
